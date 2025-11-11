@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from loguru import logger
 
 from src.indicators.custom import CustomIndicators
-from src.core.engine import Signal
+from src.core.models import Signal
 
 @dataclass
 class SupplyDemandConfig:

@@ -5,7 +5,7 @@ from typing import List, Dict
 from dataclasses import dataclass
 from loguru import logger
 
-from src.core.engine import Signal
+from src.core.models import Signal
 
 @dataclass
 class EMAPullbackConfig:

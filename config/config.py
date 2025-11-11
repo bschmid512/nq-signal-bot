@@ -1,5 +1,5 @@
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Dict, List
 from dotenv import load_dotenv
 
@@ -32,7 +32,8 @@ class TradingConfig:
     LOG_FILE: str = "logs/nq_bot.log"
     
     # Strategy Configuration
-    STRATEGIES: Dict[str, Dict] = {
+# Strategy Configuration
+    STRATEGIES: Dict[str, Dict] = field(default_factory=lambda: {
         "divergence": {
             "enabled": True,
             "base_confidence": 0.55,
@@ -94,7 +95,7 @@ class TradingConfig:
             "max_gap_atr": 0.7,
             "alternative_range": 5
         }
-    }
+    })
 
 # Global configuration instance
 config = TradingConfig()

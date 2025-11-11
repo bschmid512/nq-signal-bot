@@ -3,40 +3,14 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Tuple
-from dataclasses import dataclass
+from dataclasses import dataclass  # <-- MAKE SURE THIS LINE EXISTS
 from loguru import logger
 
 from config.config import config
 from src.utils.database import DatabaseManager
 from src.indicators.custom import CustomIndicators
-from src.strategies.divergence import DivergenceStrategy
-from src.strategies.ema_pullback import EMAPullbackStrategy
-from src.strategies.htf_supertrend import HTFSupertrendStrategy
-from src.strategies.supply_demand import SupplyDemandStrategy
-from src.strategies.vwap import VWAPStrategy
-from src.strategies.orb import ORBStrategy
-from src.utils.risk_manager import RiskManager
 
 @dataclass
-class Signal:
-    """Trading signal data structure"""
-    timestamp: datetime
-    strategy: str
-    signal_type: str  # 'long' or 'short'
-    symbol: str
-    entry_price: float
-    stop_loss: float
-    take_profit: float
-    confidence: float
-    risk_reward: float
-    atr: float
-    volume: int = 0
-    metadata: Dict = None
-    
-    def __post_init__(self):
-        if self.metadata is None:
-            self.metadata = {}
-
 class SignalGenerationEngine:
     """Main engine for generating trading signals"""
     
@@ -57,6 +31,15 @@ class SignalGenerationEngine:
     
     def _init_strategies(self):
         """Initialize all trading strategies"""
+        
+        # --- ADD THESE IMPORTS HERE ---
+        from src.strategies.divergence import DivergenceStrategy
+        from src.strategies.ema_pullback import EMAPullbackStrategy
+        from src.strategies.htf_supertrend import HTFSupertrendStrategy
+        from src.strategies.supply_demand import SupplyDemandStrategy
+        from src.strategies.vwap import VWAPStrategy
+        from src.strategies.orb import ORBStrategy
+        # --- END OF ADDED IMPORTS ---
         strategy_configs = config.STRATEGIES
         
         if strategy_configs['divergence']['enabled']:
