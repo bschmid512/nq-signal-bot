@@ -195,12 +195,11 @@ class WebhookServer:
             """Get enabled strategies and their configurations"""
             try:
                 strategies = {}
-                for name, config in config.STRATEGIES.items():
+                for name, strategy_config in config.STRATEGIES.items():
                     strategies[name] = {
-                        'enabled': config.get('enabled', False),
-                        'base_confidence': config.get('base_confidence', 0.5)
+                        'enabled': strategy_config.get('enabled', False),
+                        'base_confidence': strategy_config.get('base_confidence', 0.5)
                     }
-                
                 return {"strategies": strategies}
                 
             except Exception as e:

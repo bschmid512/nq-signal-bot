@@ -17,7 +17,7 @@ class TradingConfig:
     MAX_CONCURRENT_POSITIONS: int = 1
     MAX_DAILY_LOSS_R: float = 3.0
     MAX_DAILY_LOSS_DOLLAR: float = 1500.0
-    MIN_ATR_FOR_TRADING: float = 6.0
+    MIN_ATR_FOR_TRADING: float = 2.0
     
     # Database
     DATABASE_PATH: str = "data/nq_signals.db"
