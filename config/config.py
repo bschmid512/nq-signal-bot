@@ -8,7 +8,7 @@ load_dotenv()
 @dataclass
 class TradingConfig:
     # Market Configuration
-    SYMBOL: str = "NQ1!"
+    SYMBOL: str = "MNQ1!"
     PRIMARY_TIMEFRAME: str = "5"
     EXECUTION_TIMEFRAME: str = "1"
     HTF_TIMEFRAME: str = "15"
@@ -17,7 +17,7 @@ class TradingConfig:
     MAX_CONCURRENT_POSITIONS: int = 1
     MAX_DAILY_LOSS_R: float = 3.0
     MAX_DAILY_LOSS_DOLLAR: float = 1500.0
-    MIN_ATR_FOR_TRADING: float = 2.0
+    MIN_ATR_FOR_TRADING: float = 0.0
     
     # Database
     DATABASE_PATH: str = "data/nq_signals.db"

@@ -65,3 +65,41 @@
 2025-11-11 14:31:34 | INFO     | __main__:start_webhook_server:88 - Starting webhook server...
 2025-11-11 14:31:34 | INFO     | src.webhook_server:run:243 - Starting webhook server on 0.0.0.0:8000
 2025-11-11 14:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25656.25
+2025-11-11 14:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25652.25
+2025-11-11 14:46:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25651.25
+2025-11-11 14:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25668.0
+2025-11-11 14:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25671.25
+2025-11-11 15:01:02 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25665.5
+2025-11-11 15:06:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25671.5
+2025-11-11 15:11:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25673.25
+2025-11-11 15:13:40 | INFO     | __main__:__init__:35 - NQ Signal Bot initialized
+2025-11-11 15:13:40 | INFO     | __main__:run:211 - Starting NQ Signal Bot
+2025-11-11 15:13:47 | INFO     | __main__:start_webhook_server:88 - Starting webhook server...
+2025-11-11 15:13:47 | INFO     | src.webhook_server:run:243 - Starting webhook server on 0.0.0.0:8000
+2025-11-11 15:16:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25671.0
+2025-11-11 15:21:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25667.25
+2025-11-11 15:26:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25664.25
+2025-11-11 15:31:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25650.0
+2025-11-11 15:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25656.25
+2025-11-11 15:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25659.0
+2025-11-11 15:46:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25659.5
+2025-11-11 15:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25674.25
+2025-11-11 15:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25650.5
+2025-11-11 16:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25656.0
+2025-11-11 16:06:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25653.5
+2025-11-11 16:06:29 | INFO     | __main__:__init__:35 - NQ Signal Bot initialized
+2025-11-11 16:06:29 | INFO     | __main__:run:211 - Starting NQ Signal Bot
+2025-11-11 16:06:31 | INFO     | __main__:start_webhook_server:88 - Starting webhook server...
+2025-11-11 16:06:31 | INFO     | src.webhook_server:run:243 - Starting webhook server on 0.0.0.0:8000
+2025-11-11 16:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25667.75
+2025-11-11 16:16:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25679.25
+2025-11-11 16:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25680.5
+2025-11-11 16:26:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25659.25
+2025-11-11 16:31:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25666.75
+2025-11-11 16:36:04 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25664.5
+2025-11-11 16:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25662.75
+2025-11-11 16:46:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25667.5
+2025-11-11 16:51:02 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25666.75
+2025-11-11 16:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25660.0
+2025-11-11 18:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25669.5
+2025-11-11 18:06:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25654.5
