@@ -6,7 +6,7 @@ from typing import List, Dict, Optional
 from dataclasses import dataclass
 from loguru import logger
 
-from src.core.engine import Signal
+from src.core.models import Signal
 from config.config import config
 
 @dataclass

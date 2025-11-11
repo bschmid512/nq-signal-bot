@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass  # <-- MAKE SURE THIS LINE EXISTS
 from loguru import logger
-
+from src.utils.risk_manager import RiskManager
 from config.config import config
 from src.utils.database import DatabaseManager
 from src.indicators.custom import CustomIndicators
@@ -44,27 +44,45 @@ class SignalGenerationEngine:
         strategy_configs = config.STRATEGIES
         
         if strategy_configs['divergence']['enabled']:
-            self.strategies['divergence'] = DivergenceStrategy(strategy_configs['divergence'])
+            # Create a copy and remove the 'enabled' key
+            conf = strategy_configs['divergence'].copy()
+            conf.pop('enabled', None)
+            self.strategies['divergence'] = DivergenceStrategy(conf)
             logger.info("Divergence strategy initialized")
         
         if strategy_configs['ema_pullback']['enabled']:
-            self.strategies['ema_pullback'] = EMAPullbackStrategy(strategy_configs['ema_pullback'])
+            # Create a copy and remove the 'enabled' key
+            conf = strategy_configs['ema_pullback'].copy()
+            conf.pop('enabled', None)
+            self.strategies['ema_pullback'] = EMAPullbackStrategy(conf)
             logger.info("EMA Pullback strategy initialized")
         
         if strategy_configs['htf_supertrend']['enabled']:
-            self.strategies['htf_supertrend'] = HTFSupertrendStrategy(strategy_configs['htf_supertrend'])
+            # Create a copy and remove the 'enabled' key
+            conf = strategy_configs['htf_supertrend'].copy()
+            conf.pop('enabled', None)
+            self.strategies['htf_supertrend'] = HTFSupertrendStrategy(conf)
             logger.info("HTF Supertrend strategy initialized")
         
         if strategy_configs['supply_demand']['enabled']:
-            self.strategies['supply_demand'] = SupplyDemandStrategy(strategy_configs['supply_demand'])
+            # Create a copy and remove the 'enabled' key
+            conf = strategy_configs['supply_demand'].copy()
+            conf.pop('enabled', None)
+            self.strategies['supply_demand'] = SupplyDemandStrategy(conf)
             logger.info("Supply/Demand strategy initialized")
         
         if strategy_configs['vwap']['enabled']:
-            self.strategies['vwap'] = VWAPStrategy(strategy_configs['vwap'])
+            # Create a copy and remove the 'enabled' key
+            conf = strategy_configs['vwap'].copy()
+            conf.pop('enabled', None)
+            self.strategies['vwap'] = VWAPStrategy(conf)
             logger.info("VWAP strategy initialized")
         
         if strategy_configs['orb']['enabled']:
-            self.strategies['orb'] = ORBStrategy(strategy_configs['orb'])
+            # Create a copy and remove the 'enabled' key
+            conf = strategy_configs['orb'].copy()
+            conf.pop('enabled', None)
+            self.strategies['orb'] = ORBStrategy(conf)
             logger.info("ORB strategy initialized")
     
     async def process_new_data(self, market_data: Dict) -> List[Signal]:

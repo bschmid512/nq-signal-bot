@@ -1,0 +1,7 @@
+2025-11-11 10:31:46 | INFO     | __main__:__init__:35 - NQ Signal Bot initialized
+2025-11-11 10:31:46 | INFO     | __main__:run:211 - Starting NQ Signal Bot
+2025-11-11 10:32:05 | INFO     | __main__:start_webhook_server:88 - Starting webhook server...
+2025-11-11 10:32:05 | INFO     | src.webhook_server:run:244 - Starting webhook server on 0.0.0.0:8000
+2025-11-11 10:42:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25551.5
+2025-11-11 10:46:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25527.0
+2025-11-11 10:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25509.75
