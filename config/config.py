@@ -96,6 +96,15 @@ class TradingConfig:
             "volume_confirm": 1.5,
             "max_gap_atr": 0.7,
             "alternative_range": 5
+        },
+        # In config.py, add to STRATEGIES dict:
+        "reversal_breakout": {
+            "enabled": True,
+            "base_confidence": 0.65,
+            "rsi_oversold": 25,
+            "rsi_overbought": 75,
+            "stop_loss_atr": 1.0,
+            "take_profit_r_mult": 2.5
         }
     })
 

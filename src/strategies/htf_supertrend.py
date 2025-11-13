@@ -1,6 +1,6 @@
 """
 ADAPTED HTF SUPERTREND STRATEGY
-Replace the entire content of src/strategies/htf_supertrend.py with this
+Fixed: Added take_profit_r_mult config field
 """
 
 import pandas as pd
@@ -16,11 +16,12 @@ from src.core.models import Signal
 class HTFSupertrendConfig:
     """Configuration for HTF Supertrend strategy"""
     base_confidence: float = 0.65
-    htf_ema: int = 200  # CHANGED: Use EMA(200) on 5-min as HTF proxy
+    htf_ema: int = 200  # Use EMA(200) on 5-min as HTF proxy
     supertrend_atr: int = 10
     supertrend_multiplier: float = 3.0
     news_buffer_minutes: int = 2
-    max_stop_atr: float = 1.2
+    max_stop_atr: float = 1.5
+    take_profit_r_mult: float = 2.5  # Dynamic R-mult instead of fixed
 
 class HTFSupertrendStrategy:
     """Higher Time Frame Confirmation with Supertrend Strategy
@@ -124,8 +125,6 @@ class HTFSupertrendStrategy:
                 continue
             
             # Check for pullback to supertrend
-            # Previous bar pulled back to or below supertrend
-            # Current bar bounced back above
             if (prev_bar['low'] <= prev_bar['supertrend'] and 
                 bar['close'] > bar['supertrend'] and
                 bar['close'] > bar['open']):  # Bullish candle
@@ -153,9 +152,9 @@ class HTFSupertrendStrategy:
         atr_stop = entry_price - (self.config.max_stop_atr * atr)
         stop_loss = max(supertrend_stop, atr_stop)
         
-        # Take profit - trail by supertrend, hard TP at 2.5R
+        # Take profit - dynamic R-mult
         risk = entry_price - stop_loss
-        hard_tp = entry_price + (2.5 * risk)
+        hard_tp = entry_price + (self.config.take_profit_r_mult * risk)
         
         # Calculate confidence
         confidence = self.config.base_confidence
@@ -256,9 +255,9 @@ class HTFSupertrendStrategy:
         atr_stop = entry_price + (self.config.max_stop_atr * atr)
         stop_loss = min(supertrend_stop, atr_stop)
         
-        # Take profit - trail by supertrend, hard TP at 2.5R
+        # Take profit - dynamic R-mult
         risk = stop_loss - entry_price
-        hard_tp = entry_price - (2.5 * risk)
+        hard_tp = entry_price - (self.config.take_profit_r_mult * risk)
         
         # Calculate confidence
         confidence = self.config.base_confidence
@@ -310,7 +309,7 @@ class HTFSupertrendStrategy:
     
     def _should_skip_signal(self, current_bar: pd.Series) -> bool:
         """Check if we should skip this signal"""
-        # News buffer check (simplified - would need actual news data)
+        # News buffer check (simplified)
         current_time = datetime.now().time()
         
         # Skip if near market open (first 15 minutes)

@@ -901,3 +901,10 @@
 2025-11-13 08:46:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25516.0
 2025-11-13 08:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25541.5
 2025-11-13 08:56:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25520.5
+2025-11-13 09:01:02 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25503.0
+2025-11-13 09:11:46 | INFO     | __main__:__init__:35 - NQ Signal Bot initialized
+2025-11-13 09:11:46 | INFO     | __main__:run:211 - Starting NQ Signal Bot
+2025-11-13 09:11:48 | INFO     | __main__:start_webhook_server:88 - Starting webhook server...
+2025-11-13 09:11:48 | INFO     | src.webhook_server:run:243 - Starting webhook server on 0.0.0.0:8000
+2025-11-13 09:16:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25467.25
+2025-11-13 09:16:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals

@@ -11,7 +11,7 @@ from config.config import config
 from src.utils.database import DatabaseManager
 from src.indicators.custom import CustomIndicators
 from src.core.models import Signal
-
+from src.strategies.reversal_breakout import ReversalBreakoutStrategy
 @dataclass
 class SignalGenerationEngine:
     """Main engine for generating trading signals with dynamic regime awareness"""
@@ -80,7 +80,11 @@ class SignalGenerationEngine:
             conf.pop('enabled', None)
             self.strategies['orb'] = ORBStrategy(conf)
             logger.info("ORB strategy initialized")
-    
+        if strategy_configs['reversal_breakout']['enabled']:
+            conf = strategy_configs['reversal_breakout'].copy()
+            conf.pop('enabled', None)
+            self.strategies['reversal_breakout'] = ReversalBreakoutStrategy(conf)
+            logger.info("Reversal-Breakout strategy initialized")
     async def process_new_data(self, market_data: Dict) -> List[Signal]:
         """Process new market data and generate signals"""
         try:
