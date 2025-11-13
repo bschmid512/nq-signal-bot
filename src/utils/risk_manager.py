@@ -1,7 +1,7 @@
 from __future__ import annotations
 import pandas as pd
 import numpy as np
-from datetime import datetime, date
+from datetime import datetime, date, time
 from typing import List, Dict, Optional
 from dataclasses import dataclass
 from loguru import logger
@@ -21,7 +21,7 @@ class RiskMetrics:
     current_positions: int = 0
 
 class RiskManager:
-    """Global risk management and position sizing"""
+    """Global risk management and position sizing for NQ futures"""
     
     def __init__(self):
         self.risk_metrics = RiskMetrics()
@@ -35,7 +35,13 @@ class RiskManager:
         self.today = date.today()
         self.signals_today = []
         
-        logger.info(f"RiskManager initialized - Max daily loss: ${self.max_daily_loss}")
+        # Session filters (NQ-specific)
+        self.session_start = time(9, 30)
+        self.lunch_start = time(11, 30)  # Avoid lunch chop
+        self.lunch_end = time(13, 30)
+        self.last_hour = time(15, 45)    # Skip last 15 min
+        
+        logger.info(f"RiskManager initialized - Max positions: {self.max_positions}, Max daily loss: ${self.max_daily_loss}")
     
     def filter_signals(self, signals: List[Signal]) -> List[Signal]:
         """Filter signals based on risk management rules"""
@@ -46,6 +52,19 @@ class RiskManager:
             logger.info("Trading paused due to risk management rules")
             return filtered_signals
         
+        # Check session time (NQ-specific)
+        current_time = datetime.now().time()
+        if self.lunch_start <= current_time <= self.lunch_end:
+            logger.info("Lunch chop period - skipping signals")
+            return filtered_signals
+        
+        if current_time >= self.last_hour:
+            logger.info("End of day - skipping signals")
+            return filtered_signals
+        
+        # Filter correlated signals (similar entries)
+        signals = self._filter_correlated_signals(signals)
+        
         for signal in signals:
             if self._is_signal_allowed(signal):
                 filtered_signals.append(signal)
@@ -53,6 +72,38 @@ class RiskManager:
                 logger.info(f"Signal filtered by risk management: {signal.strategy} {signal.signal_type}")
         
         return filtered_signals
+    
+    def _filter_correlated_signals(self, signals: List[Signal]) -> List[Signal]:
+        """Remove signals that are too similar (same direction, close entries)"""
+        if len(signals) <= 1:
+            return signals
+        
+        # Group by direction
+        longs = [s for s in signals if s.signal_type == 'long']
+        shorts = [s for s in signals if s.signal_type == 'short']
+        
+        filtered = []
+        
+        # For each direction, pick highest confidence and filter by entry distance
+        if longs:
+            # Sort by confidence
+            longs_sorted = sorted(longs, key=lambda s: s.confidence, reverse=True)
+            filtered.append(longs_sorted[0])  # Take best
+            
+            # Add others if entries are > 5 ATR apart
+            for sig in longs_sorted[1:]:
+                if abs(sig.entry_price - longs_sorted[0].entry_price) > (5 * sig.atr):
+                    filtered.append(sig)
+        
+        if shorts:
+            shorts_sorted = sorted(shorts, key=lambda s: s.confidence, reverse=True)
+            filtered.append(shorts_sorted[0])
+            
+            for sig in shorts_sorted[1:]:
+                if abs(sig.entry_price - shorts_sorted[0].entry_price) > (5 * sig.atr):
+                    filtered.append(sig)
+        
+        return filtered
     
     def _should_trade_today(self) -> bool:
         """Check if we should trade based on daily risk limits"""
@@ -77,35 +128,57 @@ class RiskManager:
         """Check if individual signal meets risk criteria"""
         # Check position limit
         if self.risk_metrics.current_positions >= self.max_positions:
+            logger.warning(f"Position limit reached: {self.risk_metrics.current_positions}/{self.max_positions}")
             return False
         
         # Check minimum confidence
         if signal.confidence < 0.4:  # Minimum 40% confidence
+            logger.info(f"Signal confidence too low: {signal.confidence:.2f}")
             return False
         
         # Check minimum risk/reward
         if signal.risk_reward < 1.0:  # Minimum 1:1 risk/reward
+            logger.info(f"Risk/reward too low: {signal.risk_reward:.2f}")
             return False
         
         # Check ATR (avoid dead tape)
         if signal.atr < self.min_atr:
+            logger.info(f"ATR too low: {signal.atr:.2f}")
             return False
         
         # Check for chop conditions
         if self._is_chop_condition(signal):
+            logger.info(f"Chop condition detected for {signal.strategy}")
             return False
+        
+        # Strategy-specific filters
+        if signal.strategy == 'orb':
+            # Only allow ORB during open drive
+            current_time = datetime.now().time()
+            if not (self.session_start <= current_time <= time(10, 30)):
+                return False
         
         return True
     
     def _is_chop_condition(self, signal: Signal) -> bool:
-        """Check if market is in chop conditions"""
-        # Low ATR indicates potential chop
-        if signal.atr < 5.0:
+        """Enhanced chop detection for NQ futures"""
+        # Ultra-low ATR
+        if signal.atr < 8.0:
             return True
         
-        # Check if signal is from ORB strategy (allowed in chop)
-        if signal.strategy == 'orb':
-            return False
+        # Ultra-low volume
+        if signal.volume < 500:
+            return True
+        
+        # Tight range (from metadata if available)
+        if signal.metadata and 'bb_width' in signal.metadata:
+            bb_width_pct = signal.metadata['bb_width'] / signal.entry_price
+            if bb_width_pct < 0.003:  # Less than 0.3% range
+                return True
+        
+        # Check for extended consolidation (ADX < 15)
+        if hasattr(signal, 'metadata') and signal.metadata.get('adx', 0) < 15:
+            return True
         
         return False
     
@@ -118,54 +191,59 @@ class RiskManager:
             if pnl > 0:
                 self.risk_metrics.winning_trades += 1
                 self.risk_metrics.consecutive_losses = 0
+                logger.info(f"WIN: {signal.strategy} {signal.signal_type} - PNL: ${pnl:.2f}, R: {r_multiple:.2f}")
             else:
                 self.risk_metrics.losing_trades += 1
                 self.risk_metrics.consecutive_losses += 1
+                logger.info(f"LOSS: {signal.strategy} {signal.signal_type} - PNL: ${pnl:.2f}, R: {r_multiple:.2f}")
             
             # Update max drawdown
             if self.daily_pnl < 0:
                 current_drawdown = abs(self.daily_pnl) / self.max_daily_loss
                 self.risk_metrics.max_drawdown = max(self.risk_metrics.max_drawdown, current_drawdown)
             
-            logger.info(f"Signal result: {signal.strategy} {signal.signal_type} - "
-                       f"PNL: ${pnl:.2f}, R: {r_multiple:.2f}, "
-                       f"Daily PNL: ${self.daily_pnl:.2f}")
-            
         except Exception as e:
             logger.error(f"Error updating signal result: {e}")
     
-    def calculate_position_size(self, signal: Signal, account_balance: float) -> float:
-        """Calculate position size based on risk"""
+    def calculate_position_size(self, signal: Signal, account_balance: float) -> int:
+        """Volatility-adjusted position sizing for NQ Micro futures"""
         try:
-            # Risk per trade (1% of account balance)
-            risk_per_trade = account_balance * 0.01
+            # Base risk: 1% of account
+            dollar_risk = account_balance * 0.01
             
-            # Calculate dollar risk per share
-            if signal.signal_type == 'long':
-                dollar_risk = signal.entry_price - signal.stop_loss
-            else:  # short
-                dollar_risk = signal.stop_loss - signal.entry_price
+            # Confidence adjustment
+            dollar_risk *= signal.confidence
             
-            if dollar_risk <= 0:
+            # Volatility regime adjustment
+            if signal.atr > 20:  # High volatility
+                dollar_risk *= 0.7  # Reduce size
+                logger.info(f"High volatility detected (ATR: {signal.atr:.2f}) - reducing position size")
+            elif signal.atr < 10:  # Low volatility (potential chop)
+                dollar_risk *= 0.5
+                logger.info(f"Low volatility detected (ATR: {signal.atr:.2f}) - reducing position size")
+            
+            # Calculate contracts (Micro NQ = $2 per per point per contract)
+            # Dollar risk per contract = (stop distance in points) * $2
+            risk_per_contract = abs(signal.entry_price - signal.stop_loss) * 2
+            
+            if risk_per_contract <= 0:
                 return 0
             
-            # Calculate position size
-            position_size = risk_per_trade / dollar_risk
+            contracts = dollar_risk / risk_per_contract
             
-            # Apply confidence adjustment
-            position_size *= signal.confidence
-            
-            # Apply maximum position limit (10% of account)
+            # Maximum position: 10% of account or 3 contracts
             max_position_value = account_balance * 0.10
-            max_shares = max_position_value / signal.entry_price
+            max_contracts = max_position_value / (signal.entry_price * 2)
             
-            position_size = min(position_size, max_shares)
+            position_size = int(min(contracts, max_contracts, 3))  # Cap at 3 contracts
             
-            return int(position_size)
+            logger.info(f"Position size: {position_size} contracts (Risk: ${dollar_risk:.2f})")
+            
+            return position_size
             
         except Exception as e:
             logger.error(f"Error calculating position size: {e}")
-            return 0
+            return 1  # Default to 1 contract on error
     
     def get_risk_summary(self) -> Dict:
         """Get current risk summary"""
@@ -182,7 +260,8 @@ class RiskManager:
             'consecutive_losses': self.risk_metrics.consecutive_losses,
             'max_drawdown': self.risk_metrics.max_drawdown,
             'current_positions': self.risk_metrics.current_positions,
-            'trading_allowed': self._should_trade_today()
+            'trading_allowed': self._should_trade_today(),
+            'positions_remaining': self.max_positions - self.risk_metrics.current_positions
         }
     
     def reset_daily_metrics(self):
@@ -190,6 +269,7 @@ class RiskManager:
         self.today = date.today()
         self.daily_pnl = 0.0
         self.signals_today = []
+        self.risk_metrics.consecutive_losses = 0
         logger.info("Daily risk metrics reset")
     
     def add_position(self):
@@ -199,47 +279,3 @@ class RiskManager:
     def remove_position(self):
         """Decrement position count"""
         self.risk_metrics.current_positions = max(0, self.risk_metrics.current_positions - 1)
-
-class MarketEnvironment:
-    """Market environment assessment"""
-    
-    def __init__(self):
-        self.vix_threshold = 20.0
-        self.volume_threshold = 100000  # Minimum volume
-    
-    def assess_market_conditions(self, df: pd.DataFrame) -> Dict:
-        """Assess current market conditions"""
-        try:
-            if len(df) < 20:
-                return {'chop_guard': True, 'low_volatility': True}
-            
-            current_bar = df.iloc[-1]
-            recent_bars = df.tail(20)
-            
-            # Check volatility (ATR)
-            avg_atr = recent_bars['atr'].mean()
-            chop_guard = avg_atr < 5.0
-            
-            # Check volume
-            avg_volume = recent_bars['volume'].mean()
-            low_volume = avg_volume < self.volume_threshold
-            
-            # Check range (Bollinger Band width)
-            if 'bb_width' in recent_bars.columns:
-                avg_bb_width = recent_bars['bb_width'].mean()
-                current_price = current_bar['close']
-                low_volatility = (avg_bb_width / current_price) < 0.004  # 0.4% of price
-            else:
-                low_volatility = False
-            
-            return {
-                'chop_guard': chop_guard,
-                'low_volatility': low_volatility,
-                'low_volume': low_volume,
-                'avg_atr': avg_atr,
-                'avg_volume': avg_volume
-            }
-            
-        except Exception as e:
-            logger.error(f"Error assessing market conditions: {e}")
-            return {'chop_guard': True, 'low_volatility': True}

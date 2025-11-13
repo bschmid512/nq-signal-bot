@@ -4,16 +4,17 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Tuple
-from dataclasses import dataclass  # <-- MAKE SURE THIS LINE EXISTS
+from dataclasses import dataclass
 from loguru import logger
 from src.utils.risk_manager import RiskManager
 from config.config import config
 from src.utils.database import DatabaseManager
 from src.indicators.custom import CustomIndicators
+from src.core.models import Signal
 
 @dataclass
 class SignalGenerationEngine:
-    """Main engine for generating trading signals"""
+    """Main engine for generating trading signals with dynamic regime awareness"""
     
     def __init__(self, db_manager: DatabaseManager):
         self.db_manager = db_manager
@@ -28,58 +29,53 @@ class SignalGenerationEngine:
         self.data_cache = {}
         self.last_analysis_time = {}
         
-        logger.info("SignalGenerationEngine initialized")
+        # Regime tracking
+        self.regime_boost_cache = {}
+        
+        logger.info("SignalGenerationEngine initialized with dynamic confidence scaling")
     
     def _init_strategies(self):
         """Initialize all trading strategies"""
-        
-        # --- ADD THESE IMPORTS HERE ---
         from src.strategies.divergence import DivergenceStrategy
         from src.strategies.ema_pullback import EMAPullbackStrategy
         from src.strategies.htf_supertrend import HTFSupertrendStrategy
         from src.strategies.supply_demand import SupplyDemandStrategy
         from src.strategies.vwap import VWAPStrategy
         from src.strategies.orb import ORBStrategy
-        # --- END OF ADDED IMPORTS ---
+        
         strategy_configs = config.STRATEGIES
         
         if strategy_configs['divergence']['enabled']:
-            # Create a copy and remove the 'enabled' key
             conf = strategy_configs['divergence'].copy()
             conf.pop('enabled', None)
             self.strategies['divergence'] = DivergenceStrategy(conf)
             logger.info("Divergence strategy initialized")
         
         if strategy_configs['ema_pullback']['enabled']:
-            # Create a copy and remove the 'enabled' key
             conf = strategy_configs['ema_pullback'].copy()
             conf.pop('enabled', None)
             self.strategies['ema_pullback'] = EMAPullbackStrategy(conf)
             logger.info("EMA Pullback strategy initialized")
         
         if strategy_configs['htf_supertrend']['enabled']:
-            # Create a copy and remove the 'enabled' key
             conf = strategy_configs['htf_supertrend'].copy()
             conf.pop('enabled', None)
             self.strategies['htf_supertrend'] = HTFSupertrendStrategy(conf)
             logger.info("HTF Supertrend strategy initialized")
         
         if strategy_configs['supply_demand']['enabled']:
-            # Create a copy and remove the 'enabled' key
             conf = strategy_configs['supply_demand'].copy()
             conf.pop('enabled', None)
             self.strategies['supply_demand'] = SupplyDemandStrategy(conf)
             logger.info("Supply/Demand strategy initialized")
         
         if strategy_configs['vwap']['enabled']:
-            # Create a copy and remove the 'enabled' key
             conf = strategy_configs['vwap'].copy()
             conf.pop('enabled', None)
             self.strategies['vwap'] = VWAPStrategy(conf)
             logger.info("VWAP strategy initialized")
         
         if strategy_configs['orb']['enabled']:
-            # Create a copy and remove the 'enabled' key
             conf = strategy_configs['orb'].copy()
             conf.pop('enabled', None)
             self.strategies['orb'] = ORBStrategy(conf)
@@ -105,10 +101,10 @@ class SignalGenerationEngine:
             if len(self.data_cache[cache_key]) > 1000:
                 self.data_cache[cache_key] = self.data_cache[cache_key][-1000:]
             
-            # Check if we should analyze (avoid over-analysis on 1-minute data)
             current_time = datetime.now()
             last_analysis = self.last_analysis_time.get(cache_key, datetime.min)
             
+            # Avoid over-analysis on 1-minute data
             if timeframe == '1' and (current_time - last_analysis).seconds < 5:
                 return []
             
@@ -137,6 +133,7 @@ class SignalGenerationEngine:
                     'metadata': signal.metadata
                 })
             
+            logger.info(f"Generated {len(filtered_signals)} signals from {len(signals)} raw signals")
             return filtered_signals
             
         except Exception as e:
@@ -144,7 +141,7 @@ class SignalGenerationEngine:
             return []
     
     async def _generate_signals(self, symbol: str, timeframe: str) -> List[Signal]:
-        """Generate signals from all enabled strategies"""
+        """Generate signals from all enabled strategies with regime-aware confidence"""
         signals = []
         
         # Get historical data for analysis
@@ -156,11 +153,21 @@ class SignalGenerationEngine:
         # Calculate common indicators
         df_with_indicators = self._calculate_indicators(df)
         
+        # Calculate market regime boost
+        regime_boost = self._calculate_market_regime_boost(df_with_indicators)
+        logger.info(f"Market regime boost: +{regime_boost:.2f}")
+        
         # Generate signals from each strategy
         for strategy_name, strategy in self.strategies.items():
             try:
                 strategy_signals = strategy.generate_signals(df_with_indicators, symbol)
+                
+                # Apply regime boost to all signals
+                for signal in strategy_signals:
+                    signal.confidence = min(signal.confidence + regime_boost, 0.95)
+                
                 signals.extend(strategy_signals)
+                logger.debug(f"{strategy_name} generated {len(strategy_signals)} signals")
             except Exception as e:
                 logger.error(f"Error in {strategy_name} strategy: {e}")
         
@@ -180,7 +187,7 @@ class SignalGenerationEngine:
         return df
     
     def _calculate_indicators(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Calculate technical indicators"""
+        """Calculate technical indicators with error handling"""
         try:
             import pandas_ta as ta
             
@@ -201,7 +208,6 @@ class SignalGenerationEngine:
                 df['macd_histogram'] = macd['MACDh_12_26_9']
             
             # Bollinger Bands
-            # Bollinger Bands - manual calculation
             df['bb_middle'] = df['close'].rolling(window=20).mean()
             bb_std = df['close'].rolling(window=20).std()
             df['bb_upper'] = df['bb_middle'] + (bb_std * 2.0)
@@ -222,26 +228,66 @@ class SignalGenerationEngine:
             df['vwap_lower_2'] = vwap_bands['lower_band_2.0']
             
             # Supertrend
-            # Supertrend - using pandas-ta (more reliable)
-            try:
-                st = ta.supertrend(df['high'], df['low'], df['close'], length=10, multiplier=3.0)
-                if st is not None and not st.empty:
-                    # Find supertrend column (name varies by pandas-ta version)
-                    st_cols = [c for c in st.columns if 'SUPERT_' in c and 'SUPERTd' not in c and 'SUPERTl' not in c and 'SUPERTs' not in c]
-                    df['supertrend'] = st[st_cols[0]] if st_cols else df['close']
-                else:
-                    df['supertrend'] = df['close']
-            except:
-                df['supertrend'] = df['close']
-
-            # Ensure no NaN values
-            df['supertrend'] = df['supertrend'].fillna(df['close'])
+            df['supertrend'] = self.custom_indicators.calculate_supertrend(df)
+            
+            # Handle NaN values
+            for col in df.columns:
+                if df[col].dtype == 'float64':
+                    df[col] = df[col].fillna(method='ffill').fillna(df['close'])
             
             return df
             
         except Exception as e:
             logger.error(f"Error calculating indicators: {e}")
             return df
+    
+    def _calculate_market_regime_boost(self, df: pd.DataFrame) -> float:
+        """Calculate confidence boost based on market regime"""
+        if df.empty:
+            return 0.0
+        
+        try:
+            current_bar = df.iloc[-1]
+            boosts = []
+            
+            # High volatility regime (NQ loves momentum)
+            atr = current_bar.get('atr', 0)
+            if atr > 15:
+                boosts.append(0.08)
+            elif atr < 8:
+                # Penalty for low volatility
+                boosts.append(-0.05)
+            
+            # Trending regime (ADX > 20)
+            adx = current_bar.get('adx', 0)
+            if adx > 25:
+                boosts.append(0.06)
+            elif adx < 15:
+                boosts.append(-0.03)
+            
+            # Volume regime
+            if 'volume' in df.columns:
+                recent_volume = df['volume'].tail(20).mean()
+                current_volume = current_bar.get('volume', 0)
+                if current_volume > recent_volume * 1.5:
+                    boosts.append(0.04)
+            
+            # EMA alignment (strong trend)
+            if all(col in current_bar.index for col in ['ema_21', 'ema_50', 'ema_200']):
+                ema_21 = current_bar['ema_21']
+                ema_50 = current_bar['ema_50']
+                ema_200 = current_bar['ema_200']
+                
+                if ema_21 > ema_50 > ema_200:
+                    boosts.append(0.05)  # Strong bullish alignment
+                elif ema_21 < ema_50 < ema_200:
+                    boosts.append(0.05)  # Strong bearish alignment
+            
+            return min(sum(boosts), 0.15)  # Cap total boost at 0.15
+            
+        except Exception as e:
+            logger.error(f"Error calculating regime boost: {e}")
+            return 0.0
     
     def get_strategy_performance(self, strategy_name: str, days: int = 30) -> Dict:
         """Get performance metrics for a specific strategy"""

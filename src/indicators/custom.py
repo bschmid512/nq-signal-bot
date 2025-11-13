@@ -2,51 +2,72 @@ import pandas as pd
 import numpy as np
 from typing import Tuple, List, Optional, Dict
 from scipy import stats
+from datetime import datetime
 import warnings
 warnings.filterwarnings('ignore')
 
 class CustomIndicators:
-    """Custom technical indicators for NQ signal bot"""
+    """Custom technical indicators for NQ signal bot with session-aware VWAP"""
     
     @staticmethod
     def calculate_vwap(df: pd.DataFrame, session_start: str = "09:30") -> pd.Series:
-        """Calculate Volume Weighted Average Price (VWAP)"""
+        """Calculate session-based VWAP that properly resets at session start"""
         if 'volume' not in df.columns:
             raise ValueError("DataFrame must contain 'volume' column")
+        
+        df = df.copy()
+        df['timestamp'] = pd.to_datetime(df['timestamp'])
+        df['time_str'] = df['timestamp'].dt.strftime('%H:%M')
+        
+        # Find session start indices
+        session_starts = df[df['time_str'] == session_start].index
+        
+        if len(session_starts) == 0:
+            # No session start found, calculate cumulative VWAP
+            typical_price = (df['high'] + df['low'] + df['close']) / 3
+            cum_tp_vol = (typical_price * df['volume']).cumsum()
+            cum_vol = df['volume'].cumsum()
+            return cum_tp_vol / cum_vol
+        
+        vwap = pd.Series(index=df.index, dtype=float)
+        
+        # Calculate VWAP for each session segment
+        for i, idx in enumerate(session_starts):
+            start_idx = idx
+            end_idx = session_starts[i+1] if i+1 < len(session_starts) else df.index[-1]
+            
+            session_data = df.loc[start_idx:end_idx]
+            typical_price = (session_data['high'] + session_data['low'] + session_data['close']) / 3
+            cum_tp_vol = (typical_price * session_data['volume']).cumsum()
+            cum_vol = session_data['volume'].cumsum()
+            
+            vwap.loc[start_idx:end_idx] = cum_tp_vol / cum_vol
+        
+        return vwap.ffill()
+    
+    @staticmethod
+    def calculate_vwap_bands(df: pd.DataFrame, periods: int = 60, std_devs: List[float] = [1.0, 2.0]) -> pd.DataFrame:
+        """Calculate VWAP bands using rolling standard deviation"""
+        vwap = CustomIndicators.calculate_vwap(df)
         
         # Calculate typical price
         typical_price = (df['high'] + df['low'] + df['close']) / 3
         
-        # Calculate cumulative volume and cumulative typical price * volume
-        df['cumulative_volume'] = df['volume'].cumsum()
-        df['cumulative_tp_volume'] = (typical_price * df['volume']).cumsum()
+        # Rolling standard deviation (session-aware)
+        df['time_str'] = pd.to_datetime(df['timestamp']).dt.strftime('%H:%M')
+        session_starts = df[df['time_str'] == "09:30"].index
         
-        # Calculate VWAP
-        vwap = df['cumulative_tp_volume'] / df['cumulative_volume']
+        rolling_std = pd.Series(index=df.index, dtype=float)
         
-        # Reset at session start if timestamp column exists
-        if 'timestamp' in df.columns:
-            df['timestamp'] = pd.to_datetime(df['timestamp'])
-            session_mask = df['timestamp'].dt.strftime('%H:%M') == session_start
-            if session_mask.any():
-                session_indices = df[session_mask].index
-                for idx in session_indices:
-                    if idx > 0:
-                        # Reset cumulative calculations at session start
-                        df.loc[idx:, 'cumulative_volume'] = df.loc[idx:, 'volume'].cumsum()
-                        df.loc[idx:, 'cumulative_tp_volume'] = (typical_price.loc[idx:] * df.loc[idx:, 'volume']).cumsum()
-                        vwap.loc[idx:] = df.loc[idx:, 'cumulative_tp_volume'] / df.loc[idx:, 'cumulative_volume']
+        for i, idx in enumerate(session_starts):
+            start_idx = idx
+            end_idx = session_starts[i+1] if i+1 < len(session_starts) else df.index[-1]
+            session_data = df.loc[start_idx:end_idx]
+            
+            session_tp = typical_price.loc[start_idx:end_idx]
+            rolling_std.loc[start_idx:end_idx] = session_tp.rolling(window=periods, min_periods=10).std()
         
-        return vwap
-    
-    @staticmethod
-    def calculate_vwap_bands(df: pd.DataFrame, periods: int = 60, std_devs: List[float] = [1.0, 2.0]) -> pd.DataFrame:
-        """Calculate VWAP bands"""
-        vwap = CustomIndicators.calculate_vwap(df)
-        
-        # Calculate rolling standard deviation of typical price
-        typical_price = (df['high'] + df['low'] + df['close']) / 3
-        rolling_std = typical_price.rolling(window=periods).std()
+        rolling_std = rolling_std.ffill()
         
         bands = pd.DataFrame({'vwap': vwap, 'typical_price': typical_price, 'rolling_std': rolling_std})
         
@@ -58,7 +79,7 @@ class CustomIndicators:
     
     @staticmethod
     def find_pivot_points(df: pd.DataFrame, strength: int = 5) -> Tuple[List[int], List[int]]:
-        """Find pivot high and low points"""
+        """Find pivot high and low points using fractal method"""
         highs = []
         lows = []
         
@@ -90,13 +111,13 @@ class CustomIndicators:
     @staticmethod
     def detect_divergence(df: pd.DataFrame, indicator: pd.Series, 
                          min_bars: int = 5, max_bars: int = 120) -> List[Dict]:
-        """Detect bullish and bearish divergences"""
+        """Detect bullish and bearish divergences between price and indicator"""
         divergences = []
         
-        # Find pivot points
+        # Find pivot points in price
         pivot_highs, pivot_lows = CustomIndicators.find_pivot_points(df, strength=5)
         
-        # Find indicator pivot points
+        # Find pivot points in indicator
         indicator_highs, indicator_lows = CustomIndicators.find_pivot_points(
             pd.DataFrame({'high': indicator, 'low': indicator}), strength=5
         )
@@ -113,16 +134,20 @@ class CustomIndicators:
                 ind_low1 = indicator.iloc[indicator_lows[i]] if i < len(indicator_lows) else indicator.iloc[pivot_lows[i]]
                 ind_low2 = indicator.iloc[indicator_lows[i + 1]] if i + 1 < len(indicator_lows) else indicator.iloc[pivot_lows[i + 1]]
                 
+                # Validate divergence exists
                 if (price_low2 < price_low1 and ind_low2 > ind_low1 and 
                     pivot_lows[i + 1] - pivot_lows[i] <= max_bars and
                     pivot_lows[i + 1] - pivot_lows[i] >= min_bars):
+                    
+                    # Calculate strength
+                    strength = abs(ind_low2 - ind_low1) / ind_low1 if ind_low1 != 0 else 0
                     
                     divergences.append({
                         'type': 'bullish',
                         'price_index': pivot_lows[i + 1],
                         'price_value': price_low2,
                         'indicator_value': ind_low2,
-                        'strength': abs(ind_low2 - ind_low1) / ind_low1
+                        'strength': strength
                     })
         
         # Check for bearish divergence (price higher high, indicator lower high)
@@ -141,20 +166,22 @@ class CustomIndicators:
                     pivot_highs[i + 1] - pivot_highs[i] <= max_bars and
                     pivot_highs[i + 1] - pivot_highs[i] >= min_bars):
                     
+                    strength = abs(ind_high1 - ind_high2) / ind_high1 if ind_high1 != 0 else 0
+                    
                     divergences.append({
                         'type': 'bearish',
                         'price_index': pivot_highs[i + 1],
                         'price_value': price_high2,
                         'indicator_value': ind_high2,
-                        'strength': abs(ind_high1 - ind_high2) / ind_high1
+                        'strength': strength
                     })
         
         return divergences
     
     @staticmethod
     def calculate_supertrend(df: pd.DataFrame, atr_period: int = 10, multiplier: float = 3.0) -> pd.Series:
-        """Calculate Supertrend indicator"""
-        # Calculate ATR
+        """Calculate Supertrend indicator (reliable manual implementation)"""
+        # Calculate True Range
         high_low = df['high'] - df['low']
         high_close_prev = np.abs(df['high'] - df['close'].shift(1))
         low_close_prev = np.abs(df['low'] - df['close'].shift(1))
@@ -162,47 +189,45 @@ class CustomIndicators:
         true_range = pd.concat([high_low, high_close_prev, low_close_prev], axis=1).max(axis=1)
         atr = true_range.rolling(window=atr_period).mean()
         
-        # Calculate basic upper and lower bands
+        # Calculate basic bands
         basic_upper_band = (df['high'] + df['low']) / 2 + (multiplier * atr)
         basic_lower_band = (df['high'] + df['low']) / 2 - (multiplier * atr)
         
-        # Calculate final upper and lower bands
+        # Initialize final bands
         final_upper_band = pd.Series(index=df.index, dtype=float)
         final_lower_band = pd.Series(index=df.index, dtype=float)
+        supertrend = pd.Series(index=df.index, dtype=float)
+        trend_direction = pd.Series(index=df.index, dtype=int)  # 1 = up, -1 = down
         
         for i in range(len(df)):
             if i == 0:
                 final_upper_band.iloc[i] = basic_upper_band.iloc[i]
                 final_lower_band.iloc[i] = basic_lower_band.iloc[i]
+                supertrend.iloc[i] = basic_upper_band.iloc[i]
+                trend_direction.iloc[i] = 1
             else:
-                if df['close'].iloc[i] > final_upper_band.iloc[i-1]:
+                # Upper band logic
+                if basic_upper_band.iloc[i] > final_upper_band.iloc[i-1]:
                     final_upper_band.iloc[i] = basic_upper_band.iloc[i]
                 else:
                     final_upper_band.iloc[i] = final_upper_band.iloc[i-1]
                 
-                if df['close'].iloc[i] < final_lower_band.iloc[i-1]:
+                # Lower band logic
+                if basic_lower_band.iloc[i] < final_lower_band.iloc[i-1]:
                     final_lower_band.iloc[i] = basic_lower_band.iloc[i]
                 else:
                     final_lower_band.iloc[i] = final_lower_band.iloc[i-1]
-        
-        # Calculate Supertrend
-        supertrend = pd.Series(index=df.index, dtype=float)
-        trend_direction = pd.Series(index=df.index, dtype=int)  # 1 for uptrend, -1 for downtrend
-        
-        for i in range(len(df)):
-            if i == 0:
-                supertrend.iloc[i] = final_upper_band.iloc[i]
-                trend_direction.iloc[i] = 1
-            else:
+                
+                # Trend direction and supertrend
                 if trend_direction.iloc[i-1] == 1:  # Previous uptrend
-                    if df['close'].iloc[i] < final_lower_band.iloc[i]:
+                    if df['close'].iloc[i] <= final_lower_band.iloc[i]:
                         trend_direction.iloc[i] = -1
                         supertrend.iloc[i] = final_upper_band.iloc[i]
                     else:
                         trend_direction.iloc[i] = 1
                         supertrend.iloc[i] = final_lower_band.iloc[i]
                 else:  # Previous downtrend
-                    if df['close'].iloc[i] > final_upper_band.iloc[i]:
+                    if df['close'].iloc[i] >= final_upper_band.iloc[i]:
                         trend_direction.iloc[i] = 1
                         supertrend.iloc[i] = final_lower_band.iloc[i]
                     else:
@@ -228,10 +253,10 @@ class CustomIndicators:
         plus_dm = plus_dm.where((plus_dm > minus_dm) & (plus_dm > 0), 0)
         minus_dm = minus_dm.where((minus_dm > plus_dm) & (minus_dm > 0), 0)
         
-        # Calculate smoothed values
-        atr_smooth = true_range.rolling(window=period).mean()
-        plus_dm_smooth = plus_dm.rolling(window=period).mean()
-        minus_dm_smooth = minus_dm.rolling(window=period).mean()
+        # Smooth using Wilder's method
+        atr_smooth = true_range.ewm(alpha=1/period).mean()
+        plus_dm_smooth = plus_dm.ewm(alpha=1/period).mean()
+        minus_dm_smooth = minus_dm.ewm(alpha=1/period).mean()
         
         # Calculate +DI and -DI
         plus_di = 100 * (plus_dm_smooth / atr_smooth)
@@ -239,6 +264,6 @@ class CustomIndicators:
         
         # Calculate DX and ADX
         dx = 100 * np.abs(plus_di - minus_di) / (plus_di + minus_di)
-        adx = dx.rolling(window=period).mean()
+        adx = dx.ewm(alpha=1/period).mean()
         
         return adx

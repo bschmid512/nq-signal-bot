@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from datetime import datetime
+from datetime import datetime, time
 from typing import List, Dict
 from dataclasses import dataclass
 from loguru import logger
@@ -14,20 +14,34 @@ class EMAPullbackConfig:
     fast_ema: int = 21
     medium_ema: int = 50
     slow_ema: int = 200
-    min_slope: float = 0.1  # % per bar
+    min_slope: float = 0.1
     volume_multiplier: float = 1.2
     atr_period: int = 14
+    stop_loss_atr: float = 1.0
+    take_profit_r_mult: float = 2.0  # Dynamic R-mult
 
 class EMAPullbackStrategy:
-    """Trend-following strategy using EMA pullbacks"""
+    """Trend-following strategy using EMA pullbacks with session filters"""
     
     def __init__(self, config: Dict):
         self.config = EMAPullbackConfig(**config)
         self.last_signal_time = {}
+        
+        # Session filters
+        self.lunch_start = time(11, 30)
+        self.lunch_end = time(13, 30)
+        self.last_hour = time(15, 45)
     
     def generate_signals(self, df: pd.DataFrame, symbol: str) -> List[Signal]:
         """Generate EMA pullback trading signals"""
         signals = []
+        
+        # Session filter
+        current_time = datetime.now().time()
+        if self.lunch_start <= current_time <= self.lunch_end:
+            return signals
+        if current_time >= self.last_hour:
+            return signals
         
         try:
             # Ensure we have required columns
@@ -149,13 +163,16 @@ class EMAPullbackStrategy:
             
             # Volatility filter
             atr = current_bar['atr']
-            if pd.isna(atr) or atr < 6.0:  # Skip if ATR too low
+            if pd.isna(atr) or atr < 8.0:  # Skip if ATR too low
                 return signals
             
             # Calculate signal parameters
             entry_price = current_bar['close']
             stop_loss = support_level - (0.5 * atr)  # Below support
-            take_profit = entry_price + (2 * (entry_price - stop_loss))  # 2R target
+            
+            # Dynamic take profit based on R-mult
+            risk = entry_price - stop_loss
+            take_profit = entry_price + (self.config.take_profit_r_mult * risk)
             
             # Calculate confidence
             confidence = self.config.base_confidence
@@ -169,13 +186,19 @@ class EMAPullbackStrategy:
             if current_bar['volume'] > avg_volume * 1.5:
                 confidence += 0.05
             
+            # Boost for trending regime
+            if 'adx' in current_bar and current_bar['adx'] > 25:
+                confidence += 0.05
+            
             # Cap confidence
             confidence = min(confidence, 0.9)
             
             # Calculate risk/reward
-            risk = entry_price - stop_loss
-            reward = take_profit - entry_price
-            risk_reward = reward / risk if risk > 0 else 0
+            risk_reward = self.config.take_profit_r_mult
+            
+            # Skip if risk is too large
+            if risk > entry_price * 0.02:  # Risk > 2% of price
+                return signals
             
             signal = Signal(
                 timestamp=datetime.now(),
@@ -193,7 +216,8 @@ class EMAPullbackStrategy:
                     'trend_direction': 'bullish',
                     'support_level': support_level,
                     'ema_slope': ema_slope,
-                    'volume_ratio': current_bar['volume'] / avg_volume
+                    'volume_ratio': current_bar['volume'] / avg_volume,
+                    'bb_width': df.iloc[-1].get('bb_width', 0)
                 }
             )
             
@@ -259,13 +283,16 @@ class EMAPullbackStrategy:
             
             # Volatility filter
             atr = current_bar['atr']
-            if pd.isna(atr) or atr < 6.0:  # Skip if ATR too low
+            if pd.isna(atr) or atr < 8.0:  # Skip if ATR too low
                 return signals
             
             # Calculate signal parameters
             entry_price = current_bar['close']
             stop_loss = resistance_level + (0.5 * atr)  # Above resistance
-            take_profit = entry_price - (2 * (stop_loss - entry_price))  # 2R target
+            
+            # Dynamic take profit based on R-mult
+            risk = stop_loss - entry_price
+            take_profit = entry_price - (self.config.take_profit_r_mult * risk)
             
             # Calculate confidence
             confidence = self.config.base_confidence
@@ -279,13 +306,19 @@ class EMAPullbackStrategy:
             if current_bar['volume'] > avg_volume * 1.5:
                 confidence += 0.05
             
+            # Boost for trending regime
+            if 'adx' in current_bar and current_bar['adx'] > 25:
+                confidence += 0.05
+            
             # Cap confidence
             confidence = min(confidence, 0.9)
             
             # Calculate risk/reward
-            risk = stop_loss - entry_price
-            reward = entry_price - take_profit
-            risk_reward = reward / risk if risk > 0 else 0
+            risk_reward = self.config.take_profit_r_mult
+            
+            # Skip if risk is too large
+            if risk > entry_price * 0.02:  # Risk > 2% of price
+                return signals
             
             signal = Signal(
                 timestamp=datetime.now(),
@@ -303,7 +336,8 @@ class EMAPullbackStrategy:
                     'trend_direction': 'bearish',
                     'resistance_level': resistance_level,
                     'ema_slope': ema_slope,
-                    'volume_ratio': current_bar['volume'] / avg_volume
+                    'volume_ratio': current_bar['volume'] / avg_volume,
+                    'bb_width': df.iloc[-1].get('bb_width', 0)
                 }
             )
             
@@ -312,7 +346,7 @@ class EMAPullbackStrategy:
         return signals
     
     def _calculate_ema_slope(self, df: pd.DataFrame, ema_col: str) -> float:
-        """Calculate the slope of EMA"""
+        """Calculate the slope of EMA (percentage per bar)"""
         try:
             if len(df) < 10:
                 return 0
@@ -331,10 +365,14 @@ class EMAPullbackStrategy:
             return 0
     
     def _get_session_open(self, df: pd.DataFrame) -> float:
-        """Get session open price"""
+        """Get session open price (first bar of the day)"""
         try:
-            # Simple implementation - use first bar of the day
-            # In a real implementation, you'd track session boundaries
+            if 'timestamp' in df.columns:
+                current_date = pd.to_datetime(df['timestamp']).dt.date.iloc[-1]
+                session_bars = df[pd.to_datetime(df['timestamp']).dt.date == current_date]
+                if not session_bars.empty:
+                    return session_bars.iloc[0]['open']
+            
             return df.iloc[0]['open']
         except:
             return df.iloc[-1]['close']
