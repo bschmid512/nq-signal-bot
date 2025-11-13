@@ -201,12 +201,12 @@ class SignalGenerationEngine:
                 df['macd_histogram'] = macd['MACDh_12_26_9']
             
             # Bollinger Bands
-            bb = ta.bbands(df['close'], length=20, std=2)
-            if bb is not None:
-                df['bb_upper'] = bb['BBU_20_2.0']
-                df['bb_middle'] = bb['BBM_20_2.0']
-                df['bb_lower'] = bb['BBL_20_2.0']
-                df['bb_width'] = df['bb_upper'] - df['bb_lower']
+            # Bollinger Bands - manual calculation
+            df['bb_middle'] = df['close'].rolling(window=20).mean()
+            bb_std = df['close'].rolling(window=20).std()
+            df['bb_upper'] = df['bb_middle'] + (bb_std * 2.0)
+            df['bb_lower'] = df['bb_middle'] - (bb_std * 2.0)
+            df['bb_width'] = df['bb_upper'] - df['bb_lower']
             
             # ADX
             adx = ta.adx(df['high'], df['low'], df['close'], length=14)
@@ -222,7 +222,20 @@ class SignalGenerationEngine:
             df['vwap_lower_2'] = vwap_bands['lower_band_2.0']
             
             # Supertrend
-            df['supertrend'] = self.custom_indicators.calculate_supertrend(df)
+            # Supertrend - using pandas-ta (more reliable)
+            try:
+                st = ta.supertrend(df['high'], df['low'], df['close'], length=10, multiplier=3.0)
+                if st is not None and not st.empty:
+                    # Find supertrend column (name varies by pandas-ta version)
+                    st_cols = [c for c in st.columns if 'SUPERT_' in c and 'SUPERTd' not in c and 'SUPERTl' not in c and 'SUPERTs' not in c]
+                    df['supertrend'] = st[st_cols[0]] if st_cols else df['close']
+                else:
+                    df['supertrend'] = df['close']
+            except:
+                df['supertrend'] = df['close']
+
+            # Ensure no NaN values
+            df['supertrend'] = df['supertrend'].fillna(df['close'])
             
             return df
             

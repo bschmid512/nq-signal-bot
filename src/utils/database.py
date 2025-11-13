@@ -142,9 +142,15 @@ class DatabaseManager:
                     LIMIT ?
                 '''
                 df = pd.read_sql_query(query, conn, params=(symbol, timeframe, limit))
+                # Around line 150 in get_latest_data method:
                 if not df.empty:
                     df = df.sort_values('timestamp')
-                    df['timestamp'] = pd.to_datetime(df['timestamp'])
+                    # Handle mixed timestamp formats
+                    try:
+                        df['timestamp'] = pd.to_datetime(df['timestamp'], format='ISO8601', utc=True)
+                    except Exception:
+                        # Fallback for mixed formats
+                        df['timestamp'] = pd.to_datetime(df['timestamp'], format='mixed', utc=True)
                 return df
         except Exception as e:
             logger.error(f"Error fetching latest data: {e}")
@@ -171,7 +177,7 @@ class DatabaseManager:
                     df = pd.read_sql_query(query, conn, params=(limit,))
                 
                 if not df.empty:
-                    df['timestamp'] = pd.to_datetime(df['timestamp'])
+                    df['timestamp'] = pd.to_datetime(df['timestamp'], format='mixed', utc=True)
                     df['metadata'] = df['metadata'].apply(lambda x: json.loads(x) if x else {})
                 return df
         except Exception as e:

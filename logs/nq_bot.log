@@ -103,3 +103,655 @@
 2025-11-11 16:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25660.0
 2025-11-11 18:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25669.5
 2025-11-11 18:06:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25654.5
+2025-11-11 18:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25650.25
+2025-11-11 18:16:02 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25647.75
+2025-11-11 18:21:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25655.75
+2025-11-11 18:26:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25662.5
+2025-11-11 18:31:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25658.5
+2025-11-11 18:36:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25659.0
+2025-11-11 18:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25662.0
+2025-11-11 18:46:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25664.75
+2025-11-11 18:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25664.0
+2025-11-11 18:56:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25661.75
+2025-11-11 19:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25659.25
+2025-11-11 19:06:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25660.25
+2025-11-11 19:11:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25660.0
+2025-11-11 19:16:02 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25654.75
+2025-11-11 19:21:03 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25662.0
+2025-11-11 19:26:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25681.0
+2025-11-11 19:31:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25681.25
+2025-11-11 19:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25680.0
+2025-11-11 19:41:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25681.0
+2025-11-11 19:46:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25682.5
+2025-11-11 19:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25687.0
+2025-11-11 19:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25683.25
+2025-11-11 20:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25682.75
+2025-11-11 20:06:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25696.25
+2025-11-11 20:11:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25713.75
+2025-11-11 20:16:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25717.75
+2025-11-11 20:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25712.5
+2025-11-11 20:26:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25704.75
+2025-11-11 20:31:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25709.5
+2025-11-11 20:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25708.25
+2025-11-11 20:41:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25710.75
+2025-11-11 20:46:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25721.5
+2025-11-11 20:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25718.75
+2025-11-11 20:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25734.0
+2025-11-11 21:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25735.0
+2025-11-11 21:06:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25740.5
+2025-11-11 21:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25751.75
+2025-11-11 21:16:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25761.0
+2025-11-11 21:16:02 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 21:16:02 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 21:16:02 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 21:16:02 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 21:21:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25752.0
+2025-11-11 21:21:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 21:21:02 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 21:21:02 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 21:21:02 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 21:26:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25753.0
+2025-11-11 21:26:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 21:26:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 21:26:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 21:26:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 21:31:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25749.5
+2025-11-11 21:31:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 21:31:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 21:31:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 21:31:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 21:36:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25748.0
+2025-11-11 21:36:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 21:36:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 21:36:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 21:36:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 21:41:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25743.5
+2025-11-11 21:41:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 21:41:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 21:41:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 21:41:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 21:46:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25739.0
+2025-11-11 21:46:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 21:46:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 21:46:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 21:46:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 21:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25714.5
+2025-11-11 21:51:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 21:51:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 21:51:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 21:51:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 21:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25730.0
+2025-11-11 21:56:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 21:56:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 21:56:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 21:56:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 22:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25720.75
+2025-11-11 22:01:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 22:01:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 22:01:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 22:01:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 22:06:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25722.0
+2025-11-11 22:06:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 22:06:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 22:06:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 22:06:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 22:11:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25717.25
+2025-11-11 22:11:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 22:11:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 22:11:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 22:11:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 22:16:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25715.25
+2025-11-11 22:16:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 22:16:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 22:16:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 22:16:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 22:21:02 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25715.75
+2025-11-11 22:21:02 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 22:21:02 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 22:21:02 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 22:21:02 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 22:26:02 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25722.25
+2025-11-11 22:26:02 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 22:26:02 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 22:26:02 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 22:26:02 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 22:31:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25711.25
+2025-11-11 22:31:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 22:31:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 22:31:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 22:31:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 22:36:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25723.0
+2025-11-11 22:36:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 22:36:02 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 22:36:02 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 22:36:02 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 22:41:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25726.5
+2025-11-11 22:41:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 22:41:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 22:41:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 22:41:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 22:46:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25729.25
+2025-11-11 22:46:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 22:46:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 22:46:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 22:46:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 22:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25732.0
+2025-11-11 22:51:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 22:51:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 22:51:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 22:51:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 22:56:04 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25731.5
+2025-11-11 22:56:04 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 22:56:04 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 22:56:04 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 22:56:04 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 23:01:02 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25729.0
+2025-11-11 23:01:02 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 23:01:02 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 23:01:02 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 23:01:02 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 23:06:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25713.25
+2025-11-11 23:06:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 23:06:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 23:06:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 23:06:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 23:11:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25721.0
+2025-11-11 23:11:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 23:11:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 23:11:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 23:11:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 23:16:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25712.0
+2025-11-11 23:16:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 23:16:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 23:16:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 23:16:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 23:21:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25718.75
+2025-11-11 23:21:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 23:21:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 23:21:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 23:21:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 23:26:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25705.0
+2025-11-11 23:26:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 23:26:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 23:26:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 23:26:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 23:31:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25708.0
+2025-11-11 23:31:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 23:31:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 23:31:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 23:31:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 23:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25708.5
+2025-11-11 23:36:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 23:36:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 23:36:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 23:36:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 23:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25698.0
+2025-11-11 23:41:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 23:41:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 23:41:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 23:41:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 23:46:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25705.5
+2025-11-11 23:46:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 23:46:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 23:46:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 23:46:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 23:51:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25706.0
+2025-11-11 23:51:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 23:51:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 23:51:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 23:51:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-11 23:56:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25707.25
+2025-11-11 23:56:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-11 23:56:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-11 23:56:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-11 23:56:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 00:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25719.75
+2025-11-12 00:01:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 00:01:02 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 00:01:02 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 00:01:02 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 00:06:05 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25718.5
+2025-11-12 00:06:05 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 00:06:05 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 00:06:05 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 00:06:05 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 00:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25726.0
+2025-11-12 00:11:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 00:11:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 00:11:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 00:11:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 00:16:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25726.75
+2025-11-12 00:16:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 00:16:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 00:16:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 00:16:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 00:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25724.5
+2025-11-12 00:21:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 00:21:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 00:21:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 00:21:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 00:26:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25720.25
+2025-11-12 00:26:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 00:26:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 00:26:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 00:26:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 00:31:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25721.25
+2025-11-12 00:31:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 00:31:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 00:31:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 00:31:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 00:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25728.75
+2025-11-12 00:36:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 00:36:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 00:36:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 00:36:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 00:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25733.5
+2025-11-12 00:41:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 00:41:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 00:41:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 00:41:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 00:46:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25749.25
+2025-11-12 00:46:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 00:46:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 00:46:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 00:46:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 00:51:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25751.0
+2025-11-12 00:51:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 00:51:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 00:51:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 00:51:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 00:56:06 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25750.5
+2025-11-12 00:56:06 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 00:56:06 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 00:56:06 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 00:56:06 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 01:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25747.0
+2025-11-12 01:01:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 01:01:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 01:01:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 01:01:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 01:06:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25746.25
+2025-11-12 01:06:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 01:06:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 01:06:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 01:06:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 01:11:02 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25746.5
+2025-11-12 01:11:02 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 01:11:02 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 01:11:02 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 01:11:02 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 01:16:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25748.0
+2025-11-12 01:16:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 01:16:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 01:16:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 01:16:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 01:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25750.75
+2025-11-12 01:21:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 01:21:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 01:21:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 01:21:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 01:26:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25755.0
+2025-11-12 01:26:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 01:26:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 01:26:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 01:26:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 01:31:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25758.5
+2025-11-12 01:31:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 01:31:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 01:31:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 01:31:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 01:36:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25765.0
+2025-11-12 01:36:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 01:36:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 01:36:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 01:36:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 01:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25767.25
+2025-11-12 01:41:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 01:41:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 01:41:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 01:41:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 01:46:04 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25771.0
+2025-11-12 01:46:04 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 01:46:04 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 01:46:04 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 01:46:04 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 01:51:04 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25768.5
+2025-11-12 01:51:04 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 01:51:04 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 01:51:04 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 01:51:04 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 01:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25770.25
+2025-11-12 01:56:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 01:56:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 01:56:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 01:56:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 02:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25777.5
+2025-11-12 02:01:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 02:01:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 02:01:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 02:01:02 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 02:06:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25780.0
+2025-11-12 02:06:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 02:06:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 02:06:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 02:06:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 02:11:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25783.25
+2025-11-12 02:11:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 02:11:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 02:11:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 02:11:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 02:16:04 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25783.0
+2025-11-12 02:16:04 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 02:16:04 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 02:16:04 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 02:16:04 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 02:21:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25783.5
+2025-11-12 02:21:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 02:21:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 02:21:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 02:21:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 02:26:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25786.75
+2025-11-12 02:26:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 02:26:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 02:26:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 02:26:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 02:31:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25792.75
+2025-11-12 02:31:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 02:31:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 02:31:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 02:31:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 02:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25810.0
+2025-11-12 02:36:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 02:36:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 02:36:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 02:36:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 02:41:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25812.25
+2025-11-12 02:41:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 02:41:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 02:41:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 02:41:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 02:46:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25791.25
+2025-11-12 02:46:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 02:46:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 02:46:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 02:46:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 02:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25790.5
+2025-11-12 02:51:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 02:51:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 02:51:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 02:51:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 07:57:47 | INFO     | __main__:__init__:35 - NQ Signal Bot initialized
+2025-11-12 07:57:47 | INFO     | __main__:run:211 - Starting NQ Signal Bot
+2025-11-12 07:57:51 | INFO     | __main__:start_webhook_server:88 - Starting webhook server...
+2025-11-12 07:57:51 | INFO     | src.webhook_server:run:243 - Starting webhook server on 0.0.0.0:8000
+2025-11-12 07:59:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25785.5
+2025-11-12 08:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25795.0
+2025-11-12 08:06:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25797.5
+2025-11-12 08:11:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25808.25
+2025-11-12 08:16:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25803.25
+2025-11-12 08:21:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25798.5
+2025-11-12 08:26:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25795.5
+2025-11-12 08:31:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25792.25
+2025-11-12 08:36:04 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25798.5
+2025-11-12 08:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25804.5
+2025-11-12 08:46:02 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25796.75
+2025-11-12 08:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25805.5
+2025-11-12 08:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25807.25
+2025-11-12 09:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25792.75
+2025-11-12 09:06:02 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25784.0
+2025-11-12 09:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25785.5
+2025-11-12 09:16:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25784.0
+2025-11-12 09:21:05 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25785.0
+2025-11-12 09:26:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25779.0
+2025-11-12 09:31:06 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25735.0
+2025-11-12 09:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25693.75
+2025-11-12 09:41:02 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25664.0
+2025-11-12 09:46:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25649.5
+2025-11-12 09:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25599.5
+2025-11-12 09:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25571.0
+2025-11-12 09:59:27 | INFO     | __main__:__init__:35 - NQ Signal Bot initialized
+2025-11-12 09:59:27 | INFO     | __main__:run:211 - Starting NQ Signal Bot
+2025-11-12 09:59:30 | INFO     | __main__:start_webhook_server:88 - Starting webhook server...
+2025-11-12 09:59:30 | INFO     | src.webhook_server:run:243 - Starting webhook server on 0.0.0.0:8000
+2025-11-12 10:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25613.75
+2025-11-12 10:06:03 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25604.5
+2025-11-12 10:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25653.25
+2025-11-12 10:16:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25585.75
+2025-11-12 10:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25596.75
+2025-11-12 10:26:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25591.75
+2025-11-12 10:31:03 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25606.25
+2025-11-12 10:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25572.25
+2025-11-12 10:41:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25581.5
+2025-11-12 10:46:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25599.25
+2025-11-12 10:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25570.5
+2025-11-12 10:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25554.0
+2025-11-12 11:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25553.5
+2025-11-12 11:06:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25542.25
+2025-11-12 11:11:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25509.0
+2025-11-12 11:16:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25536.5
+2025-11-12 11:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25536.0
+2025-11-12 11:26:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25544.5
+2025-11-12 11:31:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25590.75
+2025-11-12 11:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25580.75
+2025-11-12 11:41:09 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25561.5
+2025-11-12 11:46:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25556.75
+2025-11-12 11:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25527.25
+2025-11-12 11:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25530.5
+2025-11-12 12:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25525.25
+2025-11-12 12:06:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25542.0
+2025-11-12 12:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25530.75
+2025-11-12 12:16:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25572.0
+2025-11-12 12:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25548.5
+2025-11-12 12:26:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25561.25
+2025-11-12 12:31:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25561.5
+2025-11-12 12:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25580.75
+2025-11-12 12:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25623.25
+2025-11-12 12:46:03 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25610.0
+2025-11-12 12:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25567.0
+2025-11-12 12:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25583.75
+2025-11-12 13:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25606.75
+2025-11-12 13:06:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25603.75
+2025-11-12 13:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25595.5
+2025-11-12 13:16:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25615.75
+2025-11-12 13:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25614.75
+2025-11-12 13:26:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25618.25
+2025-11-12 13:31:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25617.5
+2025-11-12 13:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25611.25
+2025-11-12 13:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25635.5
+2025-11-12 13:46:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25606.75
+2025-11-12 13:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25601.0
+2025-11-12 13:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25618.25
+2025-11-12 14:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25608.5
+2025-11-12 14:06:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25606.0
+2025-11-12 14:06:02 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 14:06:02 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 14:06:02 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 14:06:02 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 14:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25609.5
+2025-11-12 14:11:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 14:11:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 14:11:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 14:11:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 14:16:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25586.0
+2025-11-12 14:16:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 14:16:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 14:16:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 14:16:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 14:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25592.5
+2025-11-12 14:21:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 14:21:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 14:21:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 14:21:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 14:26:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25602.25
+2025-11-12 14:26:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 14:26:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 14:26:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 14:26:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 14:31:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25571.25
+2025-11-12 14:31:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 14:31:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 14:31:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 14:31:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 14:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25573.25
+2025-11-12 14:36:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 14:36:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 14:36:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 14:36:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 14:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25580.0
+2025-11-12 14:41:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 14:41:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 14:41:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 14:41:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 14:46:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25589.25
+2025-11-12 14:46:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 14:46:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 14:46:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 14:46:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 14:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25579.0
+2025-11-12 14:51:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 14:51:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 14:51:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 14:51:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 14:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25594.0
+2025-11-12 14:56:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 14:56:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 14:56:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 14:56:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 15:01:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25572.25
+2025-11-12 15:01:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 15:01:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 15:01:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 15:01:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 15:06:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25560.75
+2025-11-12 15:06:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 15:06:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 15:06:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 15:06:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 15:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25557.75
+2025-11-12 15:11:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 15:11:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 15:11:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 15:11:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 15:16:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25558.25
+2025-11-12 15:16:01 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 15:16:01 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 15:16:01 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 15:16:01 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 15:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25572.25
+2025-11-12 15:21:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 15:21:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 15:21:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 15:21:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 15:26:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25590.75
+2025-11-12 15:26:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 15:26:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 15:26:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 15:26:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 15:31:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25603.75
+2025-11-12 15:31:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 15:31:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 15:31:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 15:31:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 15:36:10 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25635.25
+2025-11-12 15:36:10 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 15:36:10 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 15:36:10 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 15:36:10 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 15:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25619.75
+2025-11-12 15:41:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 15:41:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 15:41:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 15:41:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 15:46:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25621.0
+2025-11-12 15:46:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 15:46:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 15:46:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 15:46:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 15:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25639.5
+2025-11-12 15:51:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 15:51:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 15:51:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 15:51:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 15:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25613.5
+2025-11-12 15:56:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 15:56:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 15:56:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 15:56:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 16:01:04 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25637.25
+2025-11-12 16:01:04 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 16:01:04 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 16:01:04 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 16:01:04 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 16:06:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25648.75
+2025-11-12 16:06:00 | ERROR    | src.core.engine:_calculate_indicators:230 - Error calculating indicators: 'BBU_20_2.0'
+2025-11-12 16:06:00 | WARNING  | src.strategies.ema_pullback:generate_signals:39 - Missing required columns for EMA pullback strategy
+2025-11-12 16:06:00 | WARNING  | src.strategies.htf_supertrend:generate_signals:37 - Missing required columns for HTF Supertrend strategy
+2025-11-12 16:06:00 | WARNING  | src.strategies.vwap:generate_signals:37 - Missing required columns for VWAP strategy
+2025-11-12 16:09:43 | INFO     | __main__:__init__:35 - NQ Signal Bot initialized
+2025-11-12 16:09:43 | INFO     | __main__:run:211 - Starting NQ Signal Bot
+2025-11-12 16:09:45 | INFO     | __main__:start_webhook_server:88 - Starting webhook server...
+2025-11-12 16:09:45 | INFO     | src.webhook_server:run:243 - Starting webhook server on 0.0.0.0:8000
+2025-11-12 16:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25640.25
+2025-11-12 16:16:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25639.75
+2025-11-12 16:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25631.5
+2025-11-12 16:26:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25640.25
+2025-11-12 16:31:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25643.75
+2025-11-12 16:36:02 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25639.25
+2025-11-12 16:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25642.5
+2025-11-12 16:46:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25642.5
+2025-11-12 16:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25633.75
+2025-11-12 16:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25626.25
+2025-11-12 18:01:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25619.5
+2025-11-12 18:06:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25540.75
+2025-11-12 18:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25560.25
+2025-11-12 18:16:03 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25562.0
+2025-11-12 18:21:02 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25556.5
+2025-11-12 18:26:02 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25557.5
+2025-11-12 18:31:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25565.0
+2025-11-12 18:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25541.0
+2025-11-12 18:36:19 | INFO     | __main__:__init__:35 - NQ Signal Bot initialized
+2025-11-12 18:36:19 | INFO     | __main__:run:211 - Starting NQ Signal Bot
+2025-11-12 18:36:22 | INFO     | __main__:start_webhook_server:88 - Starting webhook server...
+2025-11-12 18:36:22 | INFO     | src.webhook_server:run:243 - Starting webhook server on 0.0.0.0:8000
+2025-11-12 18:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25531.5
+2025-11-12 18:46:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25533.5
+2025-11-12 18:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25521.0
+2025-11-12 18:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25527.0
+2025-11-12 19:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25544.75
+2025-11-12 19:04:09 | INFO     | __main__:__init__:35 - NQ Signal Bot initialized
+2025-11-12 19:04:09 | INFO     | __main__:run:211 - Starting NQ Signal Bot
+2025-11-12 19:04:12 | INFO     | __main__:start_webhook_server:88 - Starting webhook server...
+2025-11-12 19:04:12 | INFO     | src.webhook_server:run:243 - Starting webhook server on 0.0.0.0:8000
+2025-11-12 19:06:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25563.75
+2025-11-12 19:11:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25593.75
+2025-11-12 19:16:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25588.25
+2025-11-12 19:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25584.75
+2025-11-12 19:26:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25585.75
+2025-11-12 19:31:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25578.0
+2025-11-12 19:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25571.5
+2025-11-12 19:41:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25565.75
+2025-11-12 19:46:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25569.5
+2025-11-12 19:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25560.0
+2025-11-12 19:56:03 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25566.0
+2025-11-12 19:59:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25563.5
+2025-11-12 20:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25560.0
+2025-11-12 20:06:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25566.0
+2025-11-12 20:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25560.25
+2025-11-12 20:16:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25652.25
+2025-11-12 20:19:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25698.75
+2025-11-12 20:21:03 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25691.75
+2025-11-12 20:26:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25687.75
+2025-11-12 20:31:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25674.0
+2025-11-12 20:36:03 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25689.5
+2025-11-12 20:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25709.0
+2025-11-12 20:46:02 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25705.25
+2025-11-12 20:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25685.75
+2025-11-12 20:56:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25691.25
+2025-11-12 21:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25699.25
+2025-11-12 21:06:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25688.5
+2025-11-12 21:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25676.25
+2025-11-12 21:16:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25686.25
+2025-11-12 21:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25683.25
+2025-11-12 21:26:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25683.5
+2025-11-12 21:31:02 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25672.5
+2025-11-12 21:36:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25666.75

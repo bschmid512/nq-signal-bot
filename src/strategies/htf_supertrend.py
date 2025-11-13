@@ -1,3 +1,8 @@
+"""
+ADAPTED HTF SUPERTREND STRATEGY
+Replace the entire content of src/strategies/htf_supertrend.py with this
+"""
+
 import pandas as pd
 import numpy as np
 from datetime import datetime, time
@@ -11,20 +16,27 @@ from src.core.models import Signal
 class HTFSupertrendConfig:
     """Configuration for HTF Supertrend strategy"""
     base_confidence: float = 0.65
-    htf_ema: int = 50
+    htf_ema: int = 200  # CHANGED: Use EMA(200) on 5-min as HTF proxy
     supertrend_atr: int = 10
     supertrend_multiplier: float = 3.0
     news_buffer_minutes: int = 2
     max_stop_atr: float = 1.2
 
 class HTFSupertrendStrategy:
-    """Higher Time Frame Confirmation with Supertrend Strategy"""
+    """Higher Time Frame Confirmation with Supertrend Strategy
+    
+    ADAPTED FOR 5-MIN DATA ONLY:
+    - Uses EMA(200) on 5-min as proxy for HTF bias (simulates 15-min trend)
+    - Uses Supertrend on 5-min for entries (instead of 1-min)
+    """
     
     def __init__(self, config: Dict):
         self.config = HTFSupertrendConfig(**config)
         self.last_signal_time = {}
         self.session_start = time(9, 30)  # Market open
         self.session_end = time(16, 0)    # Market close
+        
+        logger.info(f"HTF Supertrend adapted for 5-min data (using EMA({self.config.htf_ema}) as HTF proxy)")
     
     def generate_signals(self, df: pd.DataFrame, symbol: str) -> List[Signal]:
         """Generate HTF Supertrend trading signals"""
@@ -42,7 +54,7 @@ class HTFSupertrendStrategy:
             
             current_bar = df.iloc[-1]
             
-            # Determine HTF bias
+            # Determine HTF bias using EMA(200) as proxy
             htf_bias = self._determine_htf_bias(df)
             
             if htf_bias == 'bullish':
@@ -56,7 +68,7 @@ class HTFSupertrendStrategy:
         return signals
     
     def _determine_htf_bias(self, df: pd.DataFrame) -> str:
-        """Determine higher timeframe directional bias"""
+        """Determine higher timeframe directional bias using EMA(200) proxy"""
         try:
             current_bar = df.iloc[-1]
             htf_ema_col = f'ema_{self.config.htf_ema}'
@@ -64,13 +76,20 @@ class HTFSupertrendStrategy:
             if htf_ema_col not in df.columns:
                 return 'neutral'
             
-            # Price position relative to HTF EMA
+            # Price position relative to long-term EMA (HTF proxy)
             price = current_bar['close']
             htf_ema = current_bar[htf_ema_col]
             
-            if price > htf_ema:
+            if pd.isna(htf_ema):
+                return 'neutral'
+            
+            # Calculate strength of bias
+            distance_pct = (price - htf_ema) / htf_ema * 100
+            
+            # Strong bias required (>0.3% away from EMA)
+            if distance_pct > 0.3:
                 return 'bullish'
-            elif price < htf_ema:
+            elif distance_pct < -0.3:
                 return 'bearish'
             else:
                 return 'neutral'
@@ -84,33 +103,38 @@ class HTFSupertrendStrategy:
         signals = []
         
         # Check if we're in uptrend according to supertrend
+        if pd.isna(current_bar['supertrend']):
+            return signals
+            
         if current_bar['close'] <= current_bar['supertrend']:
             return signals
         
         # Get recent bars for context
-        recent_bars = df.tail(20)
+        recent_bars = df.tail(10)
         
-        # Look for pullback to supertrend line
+        # Look for pullback to supertrend line (entry trigger)
         pullback_detected = False
-        entry_trigger = False
+        entry_candle_idx = None
         
         for i in range(2, len(recent_bars)):
             bar = recent_bars.iloc[i]
             prev_bar = recent_bars.iloc[i-1]
             
+            if pd.isna(bar['supertrend']) or pd.isna(prev_bar['supertrend']):
+                continue
+            
             # Check for pullback to supertrend
-            if (bar['low'] <= bar['supertrend'] and 
+            # Previous bar pulled back to or below supertrend
+            # Current bar bounced back above
+            if (prev_bar['low'] <= prev_bar['supertrend'] and 
                 bar['close'] > bar['supertrend'] and
-                prev_bar['close'] > prev_bar['supertrend']):
-                pullback_detected = True
+                bar['close'] > bar['open']):  # Bullish candle
                 
-                # Check for entry trigger (rejection candle)
-                if (bar['close'] > bar['open'] and  # Bullish candle
-                    bar['low'] <= bar['supertrend'] <= bar['high']):
-                    entry_trigger = True
-                    break
+                pullback_detected = True
+                entry_candle_idx = i
+                break
         
-        if not pullback_detected or not entry_trigger:
+        if not pullback_detected:
             return signals
         
         # Additional filters
@@ -144,9 +168,10 @@ class HTFSupertrendStrategy:
                 confidence += 0.1
         
         # Boost for volume
-        avg_volume = df['volume'].tail(20).mean()
-        if current_bar['volume'] > avg_volume * 1.5:
-            confidence += 0.05
+        if 'volume' in current_bar:
+            avg_volume = df['volume'].tail(20).mean()
+            if current_bar['volume'] > avg_volume * 1.5:
+                confidence += 0.05
         
         # Cap confidence
         confidence = min(confidence, 0.9)
@@ -169,10 +194,11 @@ class HTFSupertrendStrategy:
             volume=int(current_bar.get('volume', 0)),
             metadata={
                 'htf_bias': 'bullish',
+                'htf_proxy': f'ema_{self.config.htf_ema}',
                 'trend': 'uptrend',
                 'pullback_to_supertrend': True,
                 'supertrend_level': current_bar['supertrend'],
-                'volume_ratio': current_bar['volume'] / avg_volume
+                'adapted_for_5min': True
             }
         )
         
@@ -184,33 +210,34 @@ class HTFSupertrendStrategy:
         signals = []
         
         # Check if we're in downtrend according to supertrend
+        if pd.isna(current_bar['supertrend']):
+            return signals
+            
         if current_bar['close'] >= current_bar['supertrend']:
             return signals
         
         # Get recent bars for context
-        recent_bars = df.tail(20)
+        recent_bars = df.tail(10)
         
         # Look for pullback to supertrend line
         pullback_detected = False
-        entry_trigger = False
         
         for i in range(2, len(recent_bars)):
             bar = recent_bars.iloc[i]
             prev_bar = recent_bars.iloc[i-1]
             
+            if pd.isna(bar['supertrend']) or pd.isna(prev_bar['supertrend']):
+                continue
+            
             # Check for pullback to supertrend
-            if (bar['high'] >= bar['supertrend'] and 
+            if (prev_bar['high'] >= prev_bar['supertrend'] and 
                 bar['close'] < bar['supertrend'] and
-                prev_bar['close'] < prev_bar['supertrend']):
-                pullback_detected = True
+                bar['close'] < bar['open']):  # Bearish candle
                 
-                # Check for entry trigger (rejection candle)
-                if (bar['close'] < bar['open'] and  # Bearish candle
-                    bar['low'] <= bar['supertrend'] <= bar['high']):
-                    entry_trigger = True
-                    break
+                pullback_detected = True
+                break
         
-        if not pullback_detected or not entry_trigger:
+        if not pullback_detected:
             return signals
         
         # Additional filters
@@ -244,9 +271,10 @@ class HTFSupertrendStrategy:
                 confidence += 0.1
         
         # Boost for volume
-        avg_volume = df['volume'].tail(20).mean()
-        if current_bar['volume'] > avg_volume * 1.5:
-            confidence += 0.05
+        if 'volume' in current_bar:
+            avg_volume = df['volume'].tail(20).mean()
+            if current_bar['volume'] > avg_volume * 1.5:
+                confidence += 0.05
         
         # Cap confidence
         confidence = min(confidence, 0.9)
@@ -269,10 +297,11 @@ class HTFSupertrendStrategy:
             volume=int(current_bar.get('volume', 0)),
             metadata={
                 'htf_bias': 'bearish',
+                'htf_proxy': f'ema_{self.config.htf_ema}',
                 'trend': 'downtrend',
                 'pullback_to_supertrend': True,
                 'supertrend_level': current_bar['supertrend'],
-                'volume_ratio': current_bar['volume'] / avg_volume
+                'adapted_for_5min': True
             }
         )
         
@@ -290,7 +319,7 @@ class HTFSupertrendStrategy:
         
         # Skip if low volatility
         atr = current_bar.get('atr', 0)
-        if atr < 5.0:
+        if pd.isna(atr) or atr < 5.0:
             return True
         
         return False

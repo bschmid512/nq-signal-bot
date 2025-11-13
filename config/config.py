@@ -61,7 +61,7 @@ class TradingConfig:
         "htf_supertrend": {
             "enabled": True,
             "base_confidence": 0.65,
-            "htf_ema": 50,
+            "htf_ema": 200,
             "supertrend_atr": 10,
             "supertrend_multiplier": 3.0,
             "news_buffer_minutes": 2,
