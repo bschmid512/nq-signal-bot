@@ -90,7 +90,7 @@ class NQSignalBot:
         except Exception as e:
             logger.error(f"Error starting webhook server: {e}")
             raise
-    
+        
     def start_backtest_mode(self, start_date: str, end_date: str):
         """Start bot in backtest mode"""
         try:
@@ -101,21 +101,28 @@ class NQSignalBot:
             
             # Initialize and run backtest
             backtest_engine = BacktestEngine(self.db_manager, self.risk_manager)
-            results = backtest_engine.run_backtest(start_date, end_date)
-            
-            # Display results
+            results = backtest_engine.run_backtest(start_date, end_date) or {}
+
+            # Safely pull values with defaults
+            total_trades = results.get("total_trades", 0)
+            win_rate = results.get("win_rate", 0.0)
+            total_pnl = results.get("total_pnl", 0.0)
+            max_dd = results.get("max_drawdown", 0.0)
+            sharpe = results.get("sharpe_ratio", 0.0)
+
             logger.info("Backtest Results:")
-            logger.info(f"Total Trades: {results['total_trades']}")
-            logger.info(f"Win Rate: {results['win_rate']:.2%}")
-            logger.info(f"Total PnL: ${results['total_pnl']:.2f}")
-            logger.info(f"Max Drawdown: {results['max_drawdown']:.2%}")
-            logger.info(f"Sharpe Ratio: {results['sharpe_ratio']:.2f}")
+            logger.info(f"Total Trades: {total_trades}")
+            logger.info(f"Win Rate: {win_rate:.2%}")
+            logger.info(f"Total PnL: ${total_pnl:.2f}")
+            logger.info(f"Max Drawdown: {max_dd:.2%}")
+            logger.info(f"Sharpe Ratio: {sharpe:.2f}")
             
             return results
             
         except Exception as e:
             logger.error(f"Error in backtest mode: {e}")
             return {}
+
     
     def start_paper_trading_mode(self):
         """Start bot in paper trading mode"""

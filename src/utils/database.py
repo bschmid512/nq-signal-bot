@@ -5,6 +5,22 @@ from typing import Optional, List, Dict
 import json
 from loguru import logger
 
+
+def _normalize_timestamp(ts):
+    """
+    Ensure timestamp is safe for sqlite:
+    - pandas.Timestamp -> ISO string
+    - datetime -> ISO string
+    - anything else -> str()
+    """
+    if isinstance(ts, pd.Timestamp):
+        # Convert to Python datetime, then isoformat string
+        ts = ts.to_pydatetime()
+    if isinstance(ts, datetime):
+        return ts.isoformat()
+    return str(ts)
+
+
 class DatabaseManager:
     def __init__(self, db_path: str):
         self.db_path = db_path
@@ -88,12 +104,12 @@ class DatabaseManager:
                     INSERT INTO market_data (timestamp, open, high, low, close, volume, timeframe, symbol)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 ''', (
-                    data['timestamp'],
-                    data['open'],
-                    data['high'],
-                    data['low'],
-                    data['close'],
-                    data['volume'],
+                    _normalize_timestamp(data['timestamp']),
+                    float(data['open']),
+                    float(data['high']),
+                    float(data['low']),
+                    float(data['close']),
+                    int(data['volume']),
                     data['timeframe'],
                     data['symbol']
                 ))
@@ -101,7 +117,9 @@ class DatabaseManager:
         except Exception as e:
             logger.error(f"Error inserting market data: {e}")
             return False
-    
+
+
+        
     def insert_signal(self, signal: Dict) -> bool:
         """Insert trading signal into database"""
         try:
@@ -113,23 +131,24 @@ class DatabaseManager:
                         volume, metadata
                     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 ''', (
-                    signal['timestamp'],
+                    _normalize_timestamp(signal['timestamp']),
                     signal['strategy'],
                     signal['signal_type'],
                     signal['symbol'],
-                    signal['entry_price'],
-                    signal['stop_loss'],
-                    signal['take_profit'],
-                    signal['confidence'],
-                    signal['risk_reward'],
-                    signal['atr'],
-                    signal.get('volume', 0),
+                    float(signal['entry_price']),
+                    float(signal['stop_loss']),
+                    float(signal['take_profit']),
+                    float(signal['confidence']),
+                    float(signal['risk_reward']),
+                    float(signal['atr']),
+                    int(signal.get('volume', 0)),
                     json.dumps(signal.get('metadata', {}))
                 ))
             return True
         except Exception as e:
             logger.error(f"Error inserting signal: {e}")
             return False
+
     
     def get_latest_data(self, symbol: str, timeframe: str, limit: int = 100) -> pd.DataFrame:
         """Get latest market data for analysis"""

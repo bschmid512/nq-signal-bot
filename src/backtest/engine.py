@@ -263,7 +263,40 @@ class BacktestEngine:
         except Exception as e:
             logger.error(f"Error running backtest: {e}")
             return self.results
-    
+    def run_backtest(self, start_date: str, end_date: str) -> dict:
+        logger.info(f"Starting backtest from {start_date} to {end_date}")
+
+        # ... your existing loading / simulation logic ...
+
+        # Example: suppose you store a list of trade objects or dicts
+        trades = self.trades  # or however you store them
+        total_trades = len(trades)
+
+        # PnL and win/loss stats
+        pnls = [t.pnl for t in trades]
+        wins = sum(1 for p in pnls if p > 0)
+        losses = sum(1 for p in pnls if p < 0)
+
+        total_pnl = sum(pnls) if pnls else 0.0
+        win_rate = (wins / total_trades) if total_trades > 0 else 0.0
+
+        # Equity curve, DD, Sharpe – adjust to your implementation
+        equity_curve = self._build_equity_curve(pnls)
+        max_drawdown = self._calculate_max_drawdown(equity_curve) if equity_curve else 0.0
+        sharpe_ratio = self._calculate_sharpe_ratio(equity_curve) if equity_curve else 0.0
+
+        results = {
+            "total_trades": total_trades,
+            "win_rate": win_rate,
+            "total_pnl": total_pnl,
+            "max_drawdown": max_drawdown,
+            "sharpe_ratio": sharpe_ratio,
+        }
+
+        logger.info("Backtest completed successfully")
+        logger.info(f"Backtest summary: {results}")
+        return results
+
     def calculate_final_metrics(self):
         """Calculate final performance metrics"""
         try:

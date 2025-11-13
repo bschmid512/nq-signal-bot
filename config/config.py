@@ -9,15 +9,13 @@ load_dotenv()
 class TradingConfig:
     # Market Configuration (NQ-Specific)
     SYMBOL: str = "MNQ1!"
-    PRIMARY_TIMEFRAME: str = "5"  # Focus on 5-min for better signals
-    EXECUTION_TIMEFRAME: str = "1"
+    PRIMARY_TIMEFRAME: str = "5"  # 5-min for signal generation
+    EXECUTION_TIMEFRAME: str = "1"  # 1-min for precise entries
     HTF_TIMEFRAME: str = "15"
     
-    # Risk Management (Increased for NQ volatility)
-    MAX_CONCURRENT_POSITIONS: int = 2  # Critical: was 1, now allows diversification
-    MAX_DAILY_LOSS_R: float = 3.0
-    MAX_DAILY_LOSS_DOLLAR: float = 1500.0
-    MIN_ATR_FOR_TRADING: float = 8.0  # Skip dead periods
+    # Risk Management (SIMPLIFIED - Quality over Quantity)
+    MAX_CONCURRENT_POSITIONS: int = 3  # Allow more flexibility
+    MIN_ATR_FOR_TRADING: float = 5.0  # Lower threshold for NQ
     
     # Database
     DATABASE_PATH: str = "data/nq_signals.db"
@@ -31,10 +29,10 @@ class TradingConfig:
     LOG_LEVEL: str = "INFO"
     LOG_FILE: str = "logs/nq_bot.log"
     
-    # Strategy Configuration (Optimized for NQ)
+    # Strategy Configuration (HIGH-CONFIDENCE SETUPS ONLY)
     STRATEGIES: Dict[str, Dict] = field(default_factory=lambda: {
         "divergence": {
-            "enabled": True,
+            "enabled": False,  # Disabled - too many false signals
             "base_confidence": 0.55,
             "rsi_period": 14,
             "macd_fast": 12,
@@ -44,34 +42,34 @@ class TradingConfig:
             "pivot_strength": 5,
             "ema_period": 21,
             "atr_period": 14,
-            "stop_loss_atr": 1.2,  # Wider for NQ
-            "take_profit_atr": 2.5  # Minimum 2:1 ratio
+            "stop_loss_atr": 1.2,
+            "take_profit_atr": 3.0  # Higher targets
         },
         "ema_pullback": {
-            "enabled": True,
-            "base_confidence": 0.6,
+            "enabled": True,  # ENABLED - High win rate strategy
+            "base_confidence": 0.70,  # Increased base confidence
             "fast_ema": 21,
             "medium_ema": 50,
             "slow_ema": 200,
-            "min_slope": 0.1,
-            "volume_multiplier": 1.2,
+            "min_slope": 0.15,  # Stronger trend requirement
+            "volume_multiplier": 1.3,  # Higher volume requirement
             "atr_period": 14,
-            "stop_loss_atr": 1.0,
-            "take_profit_r_mult": 2.0  # Dynamic R-mult instead of fixed
+            "stop_loss_atr": 0.8,  # Tighter stop
+            "take_profit_r_mult": 2.5  # Better R:R
         },
         "htf_supertrend": {
-            "enabled": True,
-            "base_confidence": 0.65,
+            "enabled": True,  # ENABLED - Strong directional bias
+            "base_confidence": 0.75,  # High base confidence
             "htf_ema": 200,
             "supertrend_atr": 10,
-            "supertrend_multiplier": 3.0,
+            "supertrend_multiplier": 2.5,  # Tighter bands
             "news_buffer_minutes": 2,
-            "max_stop_atr": 1.5,
-            "take_profit_r_mult": 2.5
+            "max_stop_atr": 1.2,
+            "take_profit_r_mult": 3.0  # High reward targets
         },
         "supply_demand": {
-            "enabled": False,  # Disabled: too subjective for NQ intraday
-            "base_confidence": 0.6,
+            "enabled": False,  # Disabled - needs manual zone identification
+            "base_confidence": 0.60,
             "pivot_strength": 8,
             "min_impulse_atr": 1.5,
             "zone_buffer": 2.0,
@@ -79,7 +77,7 @@ class TradingConfig:
             "stop_buffer_atr": 0.5
         },
         "vwap": {
-            "enabled": False,  # Disabled until VWAP calculation is fixed
+            "enabled": False,  # Disabled - better for ranging markets
             "base_confidence": 0.55,
             "session_start": "09:30",
             "band_std_dev": [1.0, 2.0],
@@ -88,21 +86,29 @@ class TradingConfig:
             "bb_period": 60
         },
         "orb": {
-            "enabled": False,  # Disabled initially: high variance
-            "base_confidence": 0.7,
-            "range_minutes": 5,  # Faster for NQ
+            "enabled": False,  # Disabled - high variance
+            "base_confidence": 0.70,
+            "range_minutes": 5,
             "buffer_atr_factor": 0.15,
             "min_buffer_points": 3.0,
             "volume_confirm": 1.5,
             "max_gap_atr": 0.7,
             "alternative_range": 5
         },
-        # In config.py, add to STRATEGIES dict:
         "reversal_breakout": {
-            "enabled": True,
-            "base_confidence": 0.65,
-            "rsi_oversold": 25,
-            "rsi_overbought": 75,
+            "enabled": True,  # ENABLED - Catches major turns
+            "base_confidence": 0.70,  # Increased confidence
+            "rsi_oversold": 20,  # More extreme levels
+            "rsi_overbought": 80,
+            "stop_loss_atr": 0.8,
+            "take_profit_r_mult": 3.0  # High reward for reversals
+        },
+        "momentum_surge": {
+            "enabled": True,  # NEW STRATEGY - High confidence momentum
+            "base_confidence": 0.75,
+            "volume_surge": 2.0,  # 2x average volume
+            "atr_surge": 1.5,  # 1.5x average ATR
+            "rsi_momentum": 60,  # Strong momentum threshold
             "stop_loss_atr": 1.0,
             "take_profit_r_mult": 2.5
         }

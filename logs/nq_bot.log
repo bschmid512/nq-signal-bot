@@ -908,3 +908,482 @@
 2025-11-13 09:11:48 | INFO     | src.webhook_server:run:243 - Starting webhook server on 0.0.0.0:8000
 2025-11-13 09:16:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25467.25
 2025-11-13 09:16:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 09:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25469.0
+2025-11-13 09:21:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 09:26:12 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25487.25
+2025-11-13 09:26:12 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 09:31:05 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25458.25
+2025-11-13 09:31:05 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 09:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25402.0
+2025-11-13 09:36:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 09:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25362.25
+2025-11-13 09:41:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 09:46:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25299.0
+2025-11-13 09:46:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 09:51:04 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25339.5
+2025-11-13 09:51:04 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 09:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25375.0
+2025-11-13 09:56:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 10:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25396.75
+2025-11-13 10:01:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 10:06:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25340.75
+2025-11-13 10:06:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 10:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25428.75
+2025-11-13 10:11:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 10:16:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25472.5
+2025-11-13 10:16:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 10:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25439.5
+2025-11-13 10:21:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 10:26:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25408.75
+2025-11-13 10:26:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 10:31:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25379.25
+2025-11-13 10:31:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 10:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25325.5
+2025-11-13 10:36:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 10:41:06 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25331.75
+2025-11-13 10:41:06 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 10:46:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25262.5
+2025-11-13 10:46:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 10:51:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25233.75
+2025-11-13 10:51:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 10:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25217.0
+2025-11-13 10:56:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 11:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25263.0
+2025-11-13 11:01:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 11:06:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25215.75
+2025-11-13 11:06:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 11:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25207.0
+2025-11-13 11:11:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 11:16:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25238.75
+2025-11-13 11:16:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 11:21:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25215.5
+2025-11-13 11:21:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 11:26:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25193.0
+2025-11-13 11:26:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 11:31:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25219.5
+2025-11-13 11:31:01 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 11:31:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 11:36:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25220.5
+2025-11-13 11:36:01 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 11:36:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 11:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25183.5
+2025-11-13 11:41:00 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 11:41:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 11:46:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25170.0
+2025-11-13 11:46:00 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 11:46:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 11:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25180.25
+2025-11-13 11:51:00 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 11:51:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 11:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25171.75
+2025-11-13 11:56:00 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 11:56:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 12:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25214.25
+2025-11-13 12:01:01 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 12:01:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 12:06:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25214.25
+2025-11-13 12:06:01 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 12:06:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 12:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25171.5
+2025-11-13 12:11:00 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 12:11:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 12:16:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25199.0
+2025-11-13 12:16:01 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 12:16:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 12:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25202.5
+2025-11-13 12:21:00 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 12:21:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 12:26:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25235.5
+2025-11-13 12:26:00 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 12:26:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 12:31:02 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25252.5
+2025-11-13 12:31:02 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 12:31:02 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 12:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25223.25
+2025-11-13 12:36:00 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 12:36:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 12:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25227.0
+2025-11-13 12:41:00 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 12:41:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 12:46:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25162.75
+2025-11-13 12:46:01 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 12:46:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 12:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25172.0
+2025-11-13 12:51:00 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 12:51:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 12:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25156.5
+2025-11-13 12:56:00 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 12:56:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 13:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25141.75
+2025-11-13 13:01:01 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 13:01:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 13:06:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25132.25
+2025-11-13 13:06:00 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 13:06:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 13:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25132.0
+2025-11-13 13:11:00 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 13:11:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 13:16:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25140.75
+2025-11-13 13:16:00 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 13:16:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 13:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25112.0
+2025-11-13 13:21:02 | ERROR    | src.core.engine:_calculate_market_regime_boost:293 - Error calculating regime boost: '<' not supported between instances of 'float' and 'NoneType'
+2025-11-13 13:21:02 | INFO     | src.core.engine:_generate_signals:162 - Market regime boost: +0.00
+2025-11-13 13:21:02 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 13:21:02 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 13:26:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25072.25
+2025-11-13 13:26:00 | ERROR    | src.core.engine:_calculate_market_regime_boost:293 - Error calculating regime boost: '<' not supported between instances of 'float' and 'NoneType'
+2025-11-13 13:26:00 | INFO     | src.core.engine:_generate_signals:162 - Market regime boost: +0.00
+2025-11-13 13:26:00 | INFO     | src.utils.risk_manager:filter_signals:58 - Lunch chop period - skipping signals
+2025-11-13 13:26:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 13:31:03 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25062.75
+2025-11-13 13:31:03 | ERROR    | src.core.engine:_calculate_market_regime_boost:293 - Error calculating regime boost: '<' not supported between instances of 'float' and 'NoneType'
+2025-11-13 13:31:03 | INFO     | src.core.engine:_generate_signals:162 - Market regime boost: +0.00
+2025-11-13 13:31:03 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 13:36:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25039.75
+2025-11-13 13:36:01 | ERROR    | src.core.engine:_calculate_market_regime_boost:293 - Error calculating regime boost: '<' not supported between instances of 'float' and 'NoneType'
+2025-11-13 13:36:01 | INFO     | src.core.engine:_generate_signals:162 - Market regime boost: +0.00
+2025-11-13 13:36:02 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 13:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25030.5
+2025-11-13 13:41:00 | ERROR    | src.core.engine:_calculate_market_regime_boost:293 - Error calculating regime boost: '<' not supported between instances of 'float' and 'NoneType'
+2025-11-13 13:41:00 | INFO     | src.core.engine:_generate_signals:162 - Market regime boost: +0.00
+2025-11-13 13:41:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 13:46:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25068.75
+2025-11-13 13:46:01 | ERROR    | src.core.engine:_calculate_market_regime_boost:293 - Error calculating regime boost: '<' not supported between instances of 'float' and 'NoneType'
+2025-11-13 13:46:01 | INFO     | src.core.engine:_generate_signals:162 - Market regime boost: +0.00
+2025-11-13 13:46:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 13:51:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25054.0
+2025-11-13 13:51:01 | ERROR    | src.core.engine:_calculate_market_regime_boost:293 - Error calculating regime boost: '<' not supported between instances of 'float' and 'NoneType'
+2025-11-13 13:51:01 | INFO     | src.core.engine:_generate_signals:162 - Market regime boost: +0.00
+2025-11-13 13:51:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 13:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25045.25
+2025-11-13 13:56:00 | ERROR    | src.core.engine:_calculate_market_regime_boost:293 - Error calculating regime boost: '<' not supported between instances of 'float' and 'NoneType'
+2025-11-13 13:56:00 | INFO     | src.core.engine:_generate_signals:162 - Market regime boost: +0.00
+2025-11-13 13:56:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 14:00:24 | INFO     | __main__:__init__:35 - NQ Signal Bot initialized
+2025-11-13 14:00:24 | INFO     | __main__:run:211 - Starting NQ Signal Bot
+2025-11-13 14:00:36 | INFO     | __main__:start_webhook_server:88 - Starting webhook server...
+2025-11-13 14:00:36 | INFO     | src.webhook_server:run:243 - Starting webhook server on 0.0.0.0:8000
+2025-11-13 14:01:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25062.25
+2025-11-13 14:01:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 14:06:15 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25041.0
+2025-11-13 14:06:15 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 14:11:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25042.0
+2025-11-13 14:11:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 14:16:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25029.5
+2025-11-13 14:16:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 14:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25042.5
+2025-11-13 14:21:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 14:26:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25111.75
+2025-11-13 14:26:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 14:31:04 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25094.5
+2025-11-13 14:31:04 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 14:36:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25118.0
+2025-11-13 14:36:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 14:41:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25081.0
+2025-11-13 14:41:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 14:46:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25077.5
+2025-11-13 14:46:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 14:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25068.0
+2025-11-13 14:51:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 14:56:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25023.5
+2025-11-13 14:56:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 15:01:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25065.0
+2025-11-13 15:01:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 15:06:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25041.25
+2025-11-13 15:06:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 15:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25050.5
+2025-11-13 15:11:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 15:16:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25066.75
+2025-11-13 15:16:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 15:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25025.25
+2025-11-13 15:21:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 15:26:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25036.75
+2025-11-13 15:26:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 15:31:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25077.75
+2025-11-13 15:31:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 15:36:11 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25116.75
+2025-11-13 15:36:11 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 15:41:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25135.0
+2025-11-13 15:41:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 15:46:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25122.75
+2025-11-13 15:46:00 | INFO     | src.utils.risk_manager:filter_signals:62 - End of day - skipping signals
+2025-11-13 15:46:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 15:51:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25107.0
+2025-11-13 15:51:00 | INFO     | src.utils.risk_manager:filter_signals:62 - End of day - skipping signals
+2025-11-13 15:51:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 15:56:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25077.5
+2025-11-13 15:56:01 | INFO     | src.utils.risk_manager:filter_signals:62 - End of day - skipping signals
+2025-11-13 15:56:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 16:01:06 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25125.75
+2025-11-13 16:01:06 | INFO     | src.utils.risk_manager:filter_signals:62 - End of day - skipping signals
+2025-11-13 16:01:06 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 16:06:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25145.0
+2025-11-13 16:06:01 | INFO     | src.utils.risk_manager:filter_signals:62 - End of day - skipping signals
+2025-11-13 16:06:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 16:11:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25144.5
+2025-11-13 16:11:00 | INFO     | src.utils.risk_manager:filter_signals:62 - End of day - skipping signals
+2025-11-13 16:11:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 16:16:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25157.5
+2025-11-13 16:16:01 | INFO     | src.utils.risk_manager:filter_signals:62 - End of day - skipping signals
+2025-11-13 16:16:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 16:21:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25157.25
+2025-11-13 16:21:00 | INFO     | src.utils.risk_manager:filter_signals:62 - End of day - skipping signals
+2025-11-13 16:21:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 16:26:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25132.25
+2025-11-13 16:26:00 | INFO     | src.utils.risk_manager:filter_signals:62 - End of day - skipping signals
+2025-11-13 16:26:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 16:31:01 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25128.25
+2025-11-13 16:31:01 | INFO     | src.utils.risk_manager:filter_signals:62 - End of day - skipping signals
+2025-11-13 16:31:01 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 16:36:00 | INFO     | src.webhook_server:receive_webhook:129 - Received webhook: MNQ1! 5 25111.5
+2025-11-13 16:36:00 | INFO     | src.utils.risk_manager:filter_signals:62 - End of day - skipping signals
+2025-11-13 16:36:00 | INFO     | src.core.engine:process_new_data:140 - Generated 0 signals from 0 raw signals
+2025-11-13 16:37:21 | INFO     | __main__:__init__:35 - NQ Signal Bot initialized
+2025-11-13 16:37:21 | INFO     | __main__:run:211 - Starting NQ Signal Bot
+2025-11-13 16:37:24 | INFO     | __main__:start_webhook_server:88 - Starting webhook server...
+2025-11-13 16:37:24 | INFO     | src.webhook_server:run:243 - Starting webhook server on 0.0.0.0:8000
+2025-11-13 16:37:58 | INFO     | __main__:__init__:35 - NQ Signal Bot initialized
+2025-11-13 16:37:58 | INFO     | __main__:run:211 - Starting NQ Signal Bot
+2025-11-13 16:38:20 | INFO     | __main__:start_backtest_mode:97 - Starting backtest mode from 2025-11-13 to 2025-11-13
+2025-11-13 16:38:20 | INFO     | src.utils.risk_manager:__init__:32 - 🎯 RiskManager initialized - QUALITY FOCUSED mode
+2025-11-13 16:38:20 | INFO     | src.core.engine:_init_strategies:53 - EMA Pullback strategy initialized
+2025-11-13 16:38:20 | INFO     | src.strategies.htf_supertrend:__init__:40 - HTF Supertrend adapted for 5-min data (using EMA(200) as HTF proxy)
+2025-11-13 16:38:20 | INFO     | src.core.engine:_init_strategies:59 - HTF Supertrend strategy initialized
+2025-11-13 16:38:20 | INFO     | src.core.engine:_init_strategies:65 - Reversal-Breakout strategy initialized
+2025-11-13 16:38:20 | INFO     | src.core.engine:__init__:37 - SignalGenerationEngine initialized with HIGH-CONFIDENCE mode
+2025-11-13 16:38:20 | INFO     | src.backtest.engine:__init__:32 - BacktestEngine initialized
+2025-11-13 16:38:20 | INFO     | src.backtest.engine:run_backtest:168 - Starting backtest from 2025-11-13 to 2025-11-13
+2025-11-13 16:38:20 | INFO     | src.backtest.engine:load_historical_data:40 - Loading historical data from 2025-11-13 to 2025-11-13
+2025-11-13 16:38:20 | INFO     | src.backtest.engine:run_backtest:260 - Backtest completed successfully
+2025-11-13 16:38:20 | INFO     | __main__:start_backtest_mode:107 - Backtest Results:
+2025-11-13 16:38:20 | INFO     | __main__:start_backtest_mode:108 - Total Trades: 0
+2025-11-13 16:38:20 | ERROR    | __main__:start_backtest_mode:117 - Error in backtest mode: 'win_rate'
+2025-11-13 16:39:26 | INFO     | __main__:start_backtest_mode:97 - Starting backtest mode from 2025-11-12 to 2025-11-13
+2025-11-13 16:39:26 | INFO     | src.utils.risk_manager:__init__:32 - 🎯 RiskManager initialized - QUALITY FOCUSED mode
+2025-11-13 16:39:26 | INFO     | src.core.engine:_init_strategies:53 - EMA Pullback strategy initialized
+2025-11-13 16:39:26 | INFO     | src.strategies.htf_supertrend:__init__:40 - HTF Supertrend adapted for 5-min data (using EMA(200) as HTF proxy)
+2025-11-13 16:39:26 | INFO     | src.core.engine:_init_strategies:59 - HTF Supertrend strategy initialized
+2025-11-13 16:39:26 | INFO     | src.core.engine:_init_strategies:65 - Reversal-Breakout strategy initialized
+2025-11-13 16:39:26 | INFO     | src.core.engine:__init__:37 - SignalGenerationEngine initialized with HIGH-CONFIDENCE mode
+2025-11-13 16:39:26 | INFO     | src.backtest.engine:__init__:32 - BacktestEngine initialized
+2025-11-13 16:39:26 | INFO     | src.backtest.engine:run_backtest:168 - Starting backtest from 2025-11-12 to 2025-11-13
+2025-11-13 16:39:26 | INFO     | src.backtest.engine:load_historical_data:40 - Loading historical data from 2025-11-12 to 2025-11-13
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:39:26 | ERROR    | src.backtest.engine:run_backtest:264 - Error running backtest: 'coroutine' object is not iterable
+2025-11-13 16:39:26 | INFO     | __main__:start_backtest_mode:107 - Backtest Results:
+2025-11-13 16:39:26 | INFO     | __main__:start_backtest_mode:108 - Total Trades: 0
+2025-11-13 16:39:26 | ERROR    | __main__:start_backtest_mode:117 - Error in backtest mode: 'win_rate'
+2025-11-13 16:52:09 | INFO     | __main__:start_backtest_mode:97 - Starting backtest mode from 2025-11-12 to 2025-11-13
+2025-11-13 16:52:09 | INFO     | src.utils.risk_manager:__init__:32 - 🎯 RiskManager initialized - QUALITY FOCUSED mode
+2025-11-13 16:52:09 | INFO     | src.core.engine:_init_strategies:53 - EMA Pullback strategy initialized
+2025-11-13 16:52:09 | INFO     | src.strategies.htf_supertrend:__init__:40 - HTF Supertrend adapted for 5-min data (using EMA(200) as HTF proxy)
+2025-11-13 16:52:09 | INFO     | src.core.engine:_init_strategies:59 - HTF Supertrend strategy initialized
+2025-11-13 16:52:09 | INFO     | src.core.engine:_init_strategies:65 - Reversal-Breakout strategy initialized
+2025-11-13 16:52:09 | INFO     | src.core.engine:__init__:37 - SignalGenerationEngine initialized with HIGH-CONFIDENCE mode
+2025-11-13 16:52:09 | INFO     | src.backtest.engine:__init__:32 - BacktestEngine initialized
+2025-11-13 16:52:09 | INFO     | src.backtest.engine:run_backtest:168 - Starting backtest from 2025-11-12 to 2025-11-13
+2025-11-13 16:52:09 | INFO     | src.backtest.engine:load_historical_data:40 - Loading historical data from 2025-11-12 to 2025-11-13
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.utils.database:insert_market_data:102 - Error inserting market data: Error binding parameter 1: type 'Timestamp' is not supported
+2025-11-13 16:52:09 | ERROR    | src.backtest.engine:run_backtest:264 - Error running backtest: 'coroutine' object is not iterable
+2025-11-13 16:52:09 | INFO     | __main__:start_backtest_mode:107 - Backtest Results:
+2025-11-13 16:52:09 | INFO     | __main__:start_backtest_mode:108 - Total Trades: 0
+2025-11-13 16:52:09 | ERROR    | __main__:start_backtest_mode:117 - Error in backtest mode: 'win_rate'
