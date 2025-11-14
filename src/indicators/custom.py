@@ -1,8 +1,7 @@
 import pandas as pd
 import numpy as np
 from typing import Tuple, List, Optional, Dict
-from scipy import stats
-from datetime import datetime
+from datetime import datetime  # kept in case you want it later
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -140,14 +139,14 @@ class CustomIndicators:
                     pivot_lows[i + 1] - pivot_lows[i] >= min_bars):
                     
                     # Calculate strength
-                    strength = abs(ind_low2 - ind_low1) / ind_low1 if ind_low1 != 0 else 0
+                    strength_val = abs(ind_low2 - ind_low1) / ind_low1 if ind_low1 != 0 else 0
                     
                     divergences.append({
                         'type': 'bullish',
                         'price_index': pivot_lows[i + 1],
                         'price_value': price_low2,
                         'indicator_value': ind_low2,
-                        'strength': strength
+                        'strength': strength_val
                     })
         
         # Check for bearish divergence (price higher high, indicator lower high)
@@ -166,14 +165,14 @@ class CustomIndicators:
                     pivot_highs[i + 1] - pivot_highs[i] <= max_bars and
                     pivot_highs[i + 1] - pivot_highs[i] >= min_bars):
                     
-                    strength = abs(ind_high1 - ind_high2) / ind_high1 if ind_high1 != 0 else 0
+                    strength_val = abs(ind_high1 - ind_high2) / ind_high1 if ind_high1 != 0 else 0
                     
                     divergences.append({
                         'type': 'bearish',
                         'price_index': pivot_highs[i + 1],
                         'price_value': price_high2,
                         'indicator_value': ind_high2,
-                        'strength': strength
+                        'strength': strength_val
                     })
         
         return divergences

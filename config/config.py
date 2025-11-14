@@ -9,13 +9,13 @@ load_dotenv()
 class TradingConfig:
     # Market Configuration (NQ-Specific)
     SYMBOL: str = "MNQ1!"
-    PRIMARY_TIMEFRAME: str = "5"  # 5-min for signal generation
-    EXECUTION_TIMEFRAME: str = "1"  # 1-min for precise entries
+    PRIMARY_TIMEFRAME: str = "5"   # 5-min for signal generation
+    EXECUTION_TIMEFRAME: str = "1" # 1-min for precise entries
     HTF_TIMEFRAME: str = "15"
     
     # Risk Management (SIMPLIFIED - Quality over Quantity)
     MAX_CONCURRENT_POSITIONS: int = 3  # Allow more flexibility
-    MIN_ATR_FOR_TRADING: float = 5.0  # Lower threshold for NQ
+    MIN_ATR_FOR_TRADING: float = 5.0   # Lower threshold for NQ
     
     # Database
     DATABASE_PATH: str = "data/nq_signals.db"
@@ -46,7 +46,7 @@ class TradingConfig:
             "take_profit_atr": 3.0  # Higher targets
         },
         "ema_pullback": {
-            "enabled": True,  # ENABLED - High win rate strategy
+            "enabled": False,  # disabled in favor of master strategy
             "base_confidence": 0.70,  # Increased base confidence
             "fast_ema": 21,
             "medium_ema": 50,
@@ -58,7 +58,7 @@ class TradingConfig:
             "take_profit_r_mult": 2.5  # Better R:R
         },
         "htf_supertrend": {
-            "enabled": True,  # ENABLED - Strong directional bias
+            "enabled": False,  # disabled in favor of master strategy
             "base_confidence": 0.75,  # High base confidence
             "htf_ema": 200,
             "supertrend_atr": 10,
@@ -96,7 +96,7 @@ class TradingConfig:
             "alternative_range": 5
         },
         "reversal_breakout": {
-            "enabled": True,  # ENABLED - Catches major turns
+            "enabled": False,  # disabled in favor of master strategy
             "base_confidence": 0.70,  # Increased confidence
             "rsi_oversold": 20,  # More extreme levels
             "rsi_overbought": 80,
@@ -104,14 +104,39 @@ class TradingConfig:
             "take_profit_r_mult": 3.0  # High reward for reversals
         },
         "momentum_surge": {
-            "enabled": True,  # NEW STRATEGY - High confidence momentum
+            "enabled": False,  # disabled in favor of master strategy
             "base_confidence": 0.75,
             "volume_surge": 2.0,  # 2x average volume
-            "atr_surge": 1.5,  # 1.5x average ATR
-            "rsi_momentum": 60,  # Strong momentum threshold
+            "atr_surge": 1.5,     # 1.5x average ATR
+            "rsi_momentum": 60,   # Strong momentum threshold
             "stop_loss_atr": 1.0,
             "take_profit_r_mult": 2.5
+        },
+
+        # --------------------------------------------------------------
+        # ICT MASTER STRATEGY
+        # Modes supported in ICTMasterStrategy.__init__:
+        #   - "conservative": fewer, higher-quality trades
+        #   - "normal": balanced
+        #   - "aggressive": more trades (good for testing / research)
+        # --------------------------------------------------------------
+        "ict_master": {
+            "enabled": True,
+
+            # choose one of: "conservative", "normal", "aggressive"
+            "mode": "aggressive",
+
+            # Base thresholds (ICTMasterStrategy scales these by mode)
+            "base_min_atr": 6.0,
+            "base_displacement_atr_mult": 1.0,
+            "base_max_poi_distance_atr": 3.0,
+            "base_min_rr": 2.0,
+
+            # Structure / context
+            "swing_strength": 3,
+            "lookback_bars": 120,
         }
+
     })
 
 # Global configuration instance

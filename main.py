@@ -181,14 +181,12 @@ class NQSignalBot:
             self.start_paper_trading_mode()
             
         elif choice == "3":
-            print("\nBacktest Mode")
-            start_date = input("Enter start date (YYYY-MM-DD): ").strip()
-            end_date = input("Enter end date (YYYY-MM-DD): ").strip()
-            
-            if start_date and end_date:
-                self.start_backtest_mode(start_date, end_date)
-            else:
-                print("Invalid dates provided")
+            print("\nBacktest Mode - using last 20000 bars from database (dates ignored)")
+            # Dates are only used if DB is empty (synthetic fallback)
+            default_start = "2000-01-01"
+            default_end = datetime.now().strftime("%Y-%m-%d")
+            self.start_backtest_mode(default_start, default_end)
+
             
         elif choice == "4":
             print("\nPerformance Summary:")

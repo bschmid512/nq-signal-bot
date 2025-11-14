@@ -1,24 +1,42 @@
 import sqlite3
 import pandas as pd
+import numpy as np
 from datetime import datetime
 from typing import Optional, List, Dict
 import json
 from loguru import logger
-
+import math  # ✅ add this
 
 def _normalize_timestamp(ts):
     """
     Ensure timestamp is safe for sqlite:
-    - pandas.Timestamp -> ISO string
-    - datetime -> ISO string
+    - pandas.Timestamp -> naive ISO string
+    - datetime -> naive ISO string
+    - string -> passed through
     - anything else -> str()
     """
     if isinstance(ts, pd.Timestamp):
-        # Convert to Python datetime, then isoformat string
         ts = ts.to_pydatetime()
     if isinstance(ts, datetime):
-        return ts.isoformat()
+        # drop tz if present and use a consistent format
+        if ts.tzinfo is not None:
+            ts = ts.astimezone(tz=None).replace(tzinfo=None)
+        return ts.isoformat(sep=" ")
+    if isinstance(ts, str):
+        return ts
     return str(ts)
+
+
+
+def _is_missing(v) -> bool:
+    """Treat None and NaN as missing."""
+    if v is None:
+        return True
+    if isinstance(v, float) and math.isnan(v):
+        return True
+    return False
+
+
 
 
 class DatabaseManager:
@@ -97,57 +115,139 @@ class DatabaseManager:
             ''')
     
     def insert_market_data(self, data: Dict) -> bool:
-        """Insert market data into database"""
+        """Insert market data into database (robust to None/NaN fields)."""
         try:
+            ts = _normalize_timestamp(data.get("timestamp"))
+
+            # Core prices
+            close = data.get("close")
+            open_ = data.get("open", close)
+            high = data.get("high")
+            low = data.get("low")
+
+            # Fix NaN/None using _is_missing
+            if _is_missing(close):
+                # if we don't even have a close, this row is trash
+                logger.error(f"[DB] Skipping market_data insert (missing close): {data}")
+                return False
+
+            if _is_missing(open_):
+                open_ = close
+
+            if _is_missing(high):
+                high = max(open_, close)
+
+            if _is_missing(low):
+                low = min(open_, close)
+
+            # Final safety: if anything still missing, skip insert
+            if any(_is_missing(v) for v in (open_, high, low, close)):
+                logger.error(f"[DB] Skipping market_data insert (still missing price): {data}")
+                return False
+
+            volume = int(data.get("volume", 0) or 0)
+            timeframe = data.get("timeframe", "")
+            symbol = data.get("symbol", "")
+
             with sqlite3.connect(self.db_path) as conn:
-                conn.execute('''
-                    INSERT INTO market_data (timestamp, open, high, low, close, volume, timeframe, symbol)
+                conn.execute(
+                    """
+                    INSERT INTO market_data (
+                        timestamp, open, high, low, close, volume, timeframe, symbol
+                    )
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-                ''', (
-                    _normalize_timestamp(data['timestamp']),
-                    float(data['open']),
-                    float(data['high']),
-                    float(data['low']),
-                    float(data['close']),
-                    int(data['volume']),
-                    data['timeframe'],
-                    data['symbol']
-                ))
+                    """,
+                    (
+                        ts,
+                        float(open_),
+                        float(high),
+                        float(low),
+                        float(close),
+                        volume,
+                        timeframe,
+                        symbol,
+                    ),
+                )
             return True
+
         except Exception as e:
-            logger.error(f"Error inserting market data: {e}")
+            logger.error(f"Error inserting market data: {e} | data={data}")
             return False
+
+
+    def _sanitize_metadata(self, obj):
+        """
+        Make metadata JSON-serializable:
+        - convert numpy / pandas scalars to Python ints/floats
+        - recurse through dicts/lists/tuples
+        - fallback to str() for unknown types
+        """
+        if obj is None:
+            return None
+
+        # numpy / pandas scalar
+        if isinstance(obj, (np.generic,)):
+            return obj.item()
+
+        # plain scalar
+        if isinstance(obj, (int, float, str, bool)):
+            return obj
+
+        # dict
+        if isinstance(obj, dict):
+            return {str(k): self._sanitize_metadata(v) for k, v in obj.items()}
+
+        # list / tuple
+        if isinstance(obj, (list, tuple)):
+            return [self._sanitize_metadata(v) for v in obj]
+
+        # datetime-like
+        if isinstance(obj, datetime):
+            return obj.isoformat()
+
+        # anything else – stringify
+        return str(obj)
 
 
         
     def insert_signal(self, signal: Dict) -> bool:
-        """Insert trading signal into database"""
+        """Insert trading signal into database."""
         try:
+            ts = _normalize_timestamp(signal["timestamp"])
+
+            metadata = signal.get("metadata", {})
+            metadata_clean = self._sanitize_metadata(metadata)
+
             with sqlite3.connect(self.db_path) as conn:
-                conn.execute('''
+                conn.execute(
+                    """
                     INSERT INTO signals (
                         timestamp, strategy, signal_type, symbol, entry_price,
                         stop_loss, take_profit, confidence, risk_reward, atr,
                         volume, metadata
                     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                ''', (
-                    _normalize_timestamp(signal['timestamp']),
-                    signal['strategy'],
-                    signal['signal_type'],
-                    signal['symbol'],
-                    float(signal['entry_price']),
-                    float(signal['stop_loss']),
-                    float(signal['take_profit']),
-                    float(signal['confidence']),
-                    float(signal['risk_reward']),
-                    float(signal['atr']),
-                    int(signal.get('volume', 0)),
-                    json.dumps(signal.get('metadata', {}))
-                ))
+                    """,
+                    (
+                        ts,
+                        signal["strategy"],
+                        signal["signal_type"],
+                        signal["symbol"],
+                        float(signal["entry_price"]),
+                        float(signal["stop_loss"]),
+                        float(signal["take_profit"]),
+                        float(signal["confidence"]),
+                        float(signal["risk_reward"]),
+                        float(signal["atr"]),
+                        int(signal.get("volume", 0) or 0),
+                        json.dumps(metadata_clean),
+                    ),
+                )
             return True
         except Exception as e:
-            logger.error(f"Error inserting signal: {e}")
+            logger.error(f"Error inserting signal: {e} | signal={signal}")
             return False
+
+
 
     
     def get_latest_data(self, symbol: str, timeframe: str, limit: int = 100) -> pd.DataFrame:
