@@ -9,7 +9,7 @@ from config.config import config
 from src.core.engine import SignalGenerationEngine
 from src.utils.database import DatabaseManager
 from src.utils.risk_manager import RiskManager
-
+from src.strategies.ml_ict_edge import MLICTEdgeStrategy
 
 class BacktestEngine:
     """Backtesting engine for strategy validation"""

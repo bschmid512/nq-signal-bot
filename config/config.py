@@ -12,7 +12,8 @@ class TradingConfig:
     PRIMARY_TIMEFRAME: str = "5"   # 5-min for signal generation
     EXECUTION_TIMEFRAME: str = "1" # 1-min for precise entries
     HTF_TIMEFRAME: str = "15"
-    
+    ML_EDGE_MODEL_PATH: str = "models/mnq_ict_edge_xgb.pkl"
+    ML_EDGE_THRESHOLD: float = 0.65
     # Risk Management (SIMPLIFIED - Quality over Quantity)
     MAX_CONCURRENT_POSITIONS: int = 3  # Allow more flexibility
     MIN_ATR_FOR_TRADING: float = 5.0   # Lower threshold for NQ
@@ -120,23 +121,29 @@ class TradingConfig:
         #   - "normal": balanced
         #   - "aggressive": more trades (good for testing / research)
         # --------------------------------------------------------------
-        "ict_master": {
+
+    # ... existing strategies ...
+    "ict_master": {
+        "enabled": True,
+        "risk_per_trade": 0.01,
+        "max_portfolio_risk": 0.03,
+        "min_rr_ratio": 1.5,
+        "target_rr_ratio": 2.0,
+        "min_atr": 5.0,
+        "base_confidence": 0.6,
+        "min_confidence": 0.65,   # ML probability threshold
+        "max_confidence": 0.99,
+        "model_path": "models/ict_edge_model.pkl",  # after you train + save
+    },
+
+        "ml_ict_edge": {
             "enabled": True,
-
-            # choose one of: "conservative", "normal", "aggressive"
-            "mode": "aggressive",
-
-            # Base thresholds (ICTMasterStrategy scales these by mode)
-            "base_min_atr": 6.0,
-            "base_displacement_atr_mult": 1.0,
-            "base_max_poi_distance_atr": 3.0,
-            "base_min_rr": 2.0,
-
-            # Structure / context
-            "swing_strength": 3,
-            "lookback_bars": 120,
+            "model_path": "models/mnq_ict_edge_xgb.pkl",
+            "min_prob": 0.65,
+            "stop_atr_mult": 1.0,
+            "rr_target": 2.0,
+            "min_atr": 3.0,
         }
-
     })
 
 # Global configuration instance

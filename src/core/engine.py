@@ -14,7 +14,9 @@ from src.utils.database import DatabaseManager
 from src.indicators.custom import CustomIndicators
 from src.core.models import Signal
 
-
+# ICT "feature factory" and ML edge model
+from src.strategies.ict_complete_strategy import ICTStrategy, ICTConfig
+from src.ml.ict_edge_inference import ICTMLEdgeModel
 
 
 # -------------------------------------------------
@@ -364,34 +366,48 @@ class ICTMasterStrategy:
 
 
 # =========================
-# ORIGINAL ENGINE
+# SIGNAL GENERATION ENGINE
 # =========================
 
 @dataclass
 class SignalGenerationEngine:
-    """Main engine for generating HIGH-CONFIDENCE trading signals"""
-    
+    """Main engine for generating trading signals (now ML-gated for ICT)."""
+
     def __init__(self, db_manager: DatabaseManager):
         self.db_manager = db_manager
         self.risk_manager = RiskManager()
         self.custom_indicators = CustomIndicators()
-        
+
+        # ICT feature factory + ML edge model for ICT Master
+        self.ict_feature_strategy = ICTStrategy(ICTConfig())
+        self.ict_ml_model = ICTMLEdgeModel(
+            model_path=getattr(config, "ML_EDGE_MODEL_PATH", "models/mnq_ict_edge_xgb.pkl")
+        )
+        self.ict_ml_threshold: float = float(
+            getattr(config, "ML_EDGE_THRESHOLD", 0.65)
+        )
+
+        # Generic confidence threshold (for non-ICT or fallback)
+        self.confidence_threshold: float = float(
+            getattr(config, "CONFIDENCE_THRESHOLD", 0.60)
+        )
+
         # Initialize strategies
-        self.strategies = {}
+        self.strategies: Dict[str, object] = {}
         self._init_strategies()
-        
+
         # Market data cache
-        self.data_cache = {}
-        self.last_analysis_time = {}
-        
+        self.data_cache: Dict[str, List[Dict]] = {}
+        self.last_analysis_time: Dict[str, datetime] = {}
+
         # Track recent signals to avoid duplicates
-        self.recent_signals = []
-        
-        logger.info("SignalGenerationEngine initialized with HIGH-CONFIDENCE mode")
-    
+        self.recent_signals: List[Signal] = []
+
+        logger.info("SignalGenerationEngine initialized with ML-gated ICT mode")
+
     def _init_strategies(self):
         """Initialize strategies.
-        
+
         If ict_master is enabled, we ONLY use the master strategy.
         Otherwise, fall back to the legacy strategy set.
         """
@@ -399,7 +415,7 @@ class SignalGenerationEngine:
         from src.strategies.ema_pullback import EMAPullbackStrategy
         from src.strategies.htf_supertrend import HTFSupertrendStrategy
         from src.strategies.reversal_breakout import ReversalBreakoutStrategy
-        
+
         strategy_configs = config.STRATEGIES
 
         # ✅ Master strategy takes precedence
@@ -407,34 +423,36 @@ class SignalGenerationEngine:
             conf = strategy_configs["ict_master"].copy()
             conf.pop("enabled", None)
             self.strategies["ict_master"] = ICTMasterStrategy(conf)
-            logger.info("ICT Master strategy initialized (single master mode).")
+            logger.info("ICT Master strategy initialized (single master + ML gate).")
             return
-        
+
         # Legacy strategies (fallback if master is disabled)
-        if strategy_configs['ema_pullback']['enabled']:
-            conf = strategy_configs['ema_pullback'].copy()
-            conf.pop('enabled', None)
-            self.strategies['ema_pullback'] = EMAPullbackStrategy(conf)
+        if strategy_configs["ema_pullback"]["enabled"]:
+            conf = strategy_configs["ema_pullback"].copy()
+            conf.pop("enabled", None)
+            self.strategies["ema_pullback"] = EMAPullbackStrategy(conf)
             logger.info("EMA Pullback strategy initialized")
-        
-        if strategy_configs['htf_supertrend']['enabled']:
-            conf = strategy_configs['htf_supertrend'].copy()
-            conf.pop('enabled', None)
-            self.strategies['htf_supertrend'] = HTFSupertrendStrategy(conf)
+
+        if strategy_configs["htf_supertrend"]["enabled"]:
+            conf = strategy_configs["htf_supertrend"].copy()
+            conf.pop("enabled", None)
+            self.strategies["htf_supertrend"] = HTFSupertrendStrategy(conf)
             logger.info("HTF Supertrend strategy initialized")
-        
-        if strategy_configs['reversal_breakout']['enabled']:
-            conf = strategy_configs['reversal_breakout'].copy()
-            conf.pop('enabled', None)
-            self.strategies['reversal_breakout'] = ReversalBreakoutStrategy(conf)
+
+        if strategy_configs["reversal_breakout"]["enabled"]:
+            conf = strategy_configs["reversal_breakout"].copy()
+            conf.pop("enabled", None)
+            self.strategies["reversal_breakout"] = ReversalBreakoutStrategy(conf)
             logger.info("Reversal-Breakout strategy initialized")
-    
+
     async def process_new_data(self, market_data: Dict) -> List[Signal]:
         """Process new market data and generate signals.
 
-        DEBUG VERSION:
-        - No confidence filter (we keep EVERY signal).
-        - Logs raw signal counts so we can see if strategies are firing.
+        - Stores bar to DB
+        - Updates cache
+        - Generates signals
+        - Applies ML/confidence gating
+        - De-dupes and persists signals
         """
         try:
             symbol = market_data["symbol"]
@@ -457,7 +475,7 @@ class SignalGenerationEngine:
             signals = await self._generate_signals(symbol, timeframe)
 
             if not signals:
-                # nothing from any strategy for this bar
+                # no strategy fired on this bar
                 return []
 
             logger.info(
@@ -469,8 +487,26 @@ class SignalGenerationEngine:
                 )
             )
 
-            # NO confidence filter for now – we want to see everything
-            filtered_signals = signals
+            # ---------- CONFIDENCE + ML GATING ----------
+            filtered_signals: List[Signal] = []
+            for s in signals:
+                # Base threshold
+                min_conf = self.confidence_threshold
+
+                # For ict_master with ML model loaded, use ML-specific threshold
+                if s.strategy == "ict_master" and self.ict_ml_model.is_ready():
+                    min_conf = self.ict_ml_threshold
+
+                if s.confidence >= min_conf:
+                    filtered_signals.append(s)
+                else:
+                    logger.info(
+                        f"[Engine] Dropping {s.strategy} {s.signal_type} "
+                        f"@{s.entry_price:.1f} conf={s.confidence:.2f} < {min_conf:.2f}"
+                    )
+
+            if not filtered_signals:
+                return []
 
             # remove near-duplicates
             unique_signals = self._remove_duplicate_signals(filtered_signals)
@@ -497,7 +533,7 @@ class SignalGenerationEngine:
             if unique_signals:
                 logger.info(
                     f"🎯 Emitting {len(unique_signals)} signals this bar "
-                    f"(no confidence filter, RR/conf printed above)."
+                    f"(after ML/confidence gating)."
                 )
 
             return unique_signals
@@ -506,9 +542,8 @@ class SignalGenerationEngine:
             logger.error(f"Error processing new data: {e}")
             return []
 
-    
     async def _generate_signals(self, symbol: str, timeframe: str) -> List[Signal]:
-        """Generate signals with market structure analysis."""
+        """Generate signals with market structure analysis + ICT ML gating."""
         signals: List[Signal] = []
 
         df = self._get_analysis_dataframe(symbol, timeframe)
@@ -520,6 +555,7 @@ class SignalGenerationEngine:
         market_condition = self._analyze_market_structure(df_with_indicators)
         logger.info(f"Market condition: {market_condition}")
 
+        # 1) Raw signals from all active strategies
         for strategy_name, strategy in self.strategies.items():
             try:
                 strategy_signals = strategy.generate_signals(
@@ -535,175 +571,231 @@ class SignalGenerationEngine:
                 for signal in strategy_signals:
                     if market_condition == "strong_trend":
                         if strategy_name in ["ema_pullback", "htf_supertrend"]:
-                            signal.confidence = min(signal.confidence + 0.15, 0.95)
+                            signal.confidence = min(
+                                signal.confidence + 0.15, 0.95
+                            )
                     elif market_condition == "reversal":
                         if strategy_name == "reversal_breakout":
-                            signal.confidence = min(signal.confidence + 0.20, 0.95)
+                            signal.confidence = min(
+                                signal.confidence + 0.20, 0.95
+                            )
 
                 signals.extend(strategy_signals)
 
             except Exception as e:
                 logger.error(f"Error in {strategy_name} strategy: {e}")
 
+        # 2) ICT ML edge: overwrite ICTMaster confidence with model probability
+        if signals and self.ict_ml_model.is_ready() and "ict_master" in self.strategies:
+            last_pos = len(df_with_indicators) - 1
+            for sig in signals:
+                if sig.strategy != "ict_master":
+                    continue
+
+                p_win = self.ict_ml_model.score_bar(
+                    df_with_indicators,
+                    self.ict_feature_strategy,
+                    last_pos,
+                )
+                if p_win is None:
+                    continue
+
+                if sig.metadata is None:
+                    sig.metadata = {}
+                sig.metadata["ml_edge_p"] = p_win
+                sig.metadata["pre_ml_confidence"] = sig.confidence
+
+                sig.confidence = float(p_win)
+
+                logger.info(
+                    f"[ML] ICT edge prob for {sig.symbol} "
+                    f"{sig.signal_type} @ {sig.entry_price:.1f}: p={p_win:.3f}"
+                )
+
         return signals
 
-    
     def _get_analysis_dataframe(self, symbol: str, timeframe: str) -> pd.DataFrame:
-        """Get market data as DataFrame for analysis"""
+        """Get market data as DataFrame for analysis.
+
+        Ensures:
+        - 'timestamp' column is datetime
+        - DataFrame is sorted by time
+        - DatetimeIndex is set (drop=False so column stays too)
+        """
         cache_key = f"{symbol}_{timeframe}"
         if cache_key in self.data_cache and len(self.data_cache[cache_key]) > 0:
             df = pd.DataFrame(self.data_cache[cache_key])
-            df['timestamp'] = pd.to_datetime(df['timestamp'])
-            return df
-        
-        # Get from database
-        df = self.db_manager.get_latest_data(symbol, timeframe, limit=200)
+        else:
+            # Get from database
+            df = self.db_manager.get_latest_data(symbol, timeframe, limit=200)
+
+        if df is None or df.empty:
+            return pd.DataFrame()
+
+        if "timestamp" not in df.columns:
+            # try index
+            if isinstance(df.index, pd.DatetimeIndex):
+                df = df.copy()
+                df["timestamp"] = df.index
+            else:
+                logger.error(
+                    "[Engine] DataFrame missing 'timestamp' column and datetime index."
+                )
+                return pd.DataFrame()
+
+        df = df.copy()
+        df["timestamp"] = pd.to_datetime(df["timestamp"])
+        df = df.sort_values("timestamp")
+        df = df.set_index("timestamp", drop=False)
+
         return df
-    
+
     def _calculate_indicators(self, df: pd.DataFrame) -> pd.DataFrame:
         """Calculate all technical indicators with proper error handling"""
         try:
             # Core momentum indicators
-            df['rsi'] = ta.rsi(df['close'], length=14)
-            df['atr'] = ta.atr(df['high'], df['low'], df['close'], length=14)
-            
+            df["rsi"] = ta.rsi(df["close"], length=14)
+            df["atr"] = ta.atr(df["high"], df["low"], df["close"], length=14)
+
             # EMAs for trend
-            df['ema_21'] = ta.ema(df['close'], length=21)
-            df['ema_50'] = ta.ema(df['close'], length=50)
-            df['ema_200'] = ta.ema(df['close'], length=200)
-            
+            df["ema_21"] = ta.ema(df["close"], length=21)
+            df["ema_50"] = ta.ema(df["close"], length=50)
+            df["ema_200"] = ta.ema(df["close"], length=200)
+
             # MACD for momentum
-            macd = ta.macd(df['close'], fast=12, slow=26, signal=9)
+            macd = ta.macd(df["close"], fast=12, slow=26, signal=9)
             if macd is not None and not macd.empty:
-                df['macd'] = macd['MACD_12_26_9']
-                df['macd_signal'] = macd['MACDs_12_26_9']
-                df['macd_histogram'] = macd['MACDh_12_26_9']
-            
+                df["macd"] = macd["MACD_12_26_9"]
+                df["macd_signal"] = macd["MACDs_12_26_9"]
+                df["macd_histogram"] = macd["MACDh_12_26_9"]
+
             # Bollinger Bands for volatility
-            bb = ta.bbands(df['close'], length=20, std=2)
+            bb = ta.bbands(df["close"], length=20, std=2)
             if bb is not None and not bb.empty:
-                df['bb_upper'] = bb.iloc[:, 0]
-                df['bb_middle'] = bb.iloc[:, 1]
-                df['bb_lower'] = bb.iloc[:, 2]
-                df['bb_width'] = df['bb_upper'] - df['bb_lower']
-            
+                df["bb_upper"] = bb.iloc[:, 0]
+                df["bb_middle"] = bb.iloc[:, 1]
+                df["bb_lower"] = bb.iloc[:, 2]
+                df["bb_width"] = df["bb_upper"] - df["bb_lower"]
+
             # ADX for trend strength
-            adx = ta.adx(df['high'], df['low'], df['close'], length=14)
+            adx = ta.adx(df["high"], df["low"], df["close"], length=14)
             if adx is not None and not adx.empty:
-                df['adx'] = adx['ADX_14']
-            
+                df["adx"] = adx["ADX_14"]
+
             # Volume indicators
-            df['volume_sma'] = ta.sma(df['volume'], length=20)
-            df['volume_ratio'] = df['volume'] / df['volume_sma']
-            
+            df["volume_sma"] = ta.sma(df["volume"], length=20)
+            df["volume_ratio"] = df["volume"] / df["volume_sma"]
+
             # Custom VWAP
-            df['vwap'] = self.custom_indicators.calculate_vwap(df)
-            
+            df["vwap"] = self.custom_indicators.calculate_vwap(df)
+
             # VWAP bands
-            if 'vwap' in df.columns and 'atr' in df.columns:
-                df['vwap_upper_1'] = df['vwap'] + df['atr']
-                df['vwap_lower_1'] = df['vwap'] - df['atr']
-                df['vwap_upper_2'] = df['vwap'] + 2 * df['atr']
-                df['vwap_lower_2'] = df['vwap'] - 2 * df['atr']
-            
+            if "vwap" in df.columns and "atr" in df.columns:
+                df["vwap_upper_1"] = df["vwap"] + df["atr"]
+                df["vwap_lower_1"] = df["vwap"] - df["atr"]
+                df["vwap_upper_2"] = df["vwap"] + 2 * df["atr"]
+                df["vwap_lower_2"] = df["vwap"] - 2 * df["atr"]
+
             # Supertrend
-            df['supertrend'] = self.custom_indicators.calculate_supertrend(df)
-            
+            df["supertrend"] = self.custom_indicators.calculate_supertrend(df)
+
             # Fill NaN values
-            df = df.fillna(method='ffill').fillna(method='bfill')
-            
+            df = df.fillna(method="ffill").fillna(method="bfill")
+
             return df
-            
+
         except Exception as e:
             logger.error(f"Error calculating indicators: {e}")
             return df
-    
+
     def _analyze_market_structure(self, df: pd.DataFrame) -> str:
         """Analyze market structure for better signal context"""
         if df.empty or len(df) < 50:
-            return 'unknown'
-        
+            return "unknown"
+
         try:
             current_bar = df.iloc[-1]
-            
-            if 'adx' in current_bar and not pd.isna(current_bar['adx']):
-                adx = current_bar['adx']
-                
+
+            if "adx" in current_bar and not pd.isna(current_bar["adx"]):
+                adx = current_bar["adx"]
+
                 if adx > 30:
-                    if 'ema_21' in current_bar and 'ema_50' in current_bar:
-                        return 'strong_trend'
+                    if "ema_21" in current_bar and "ema_50" in current_bar:
+                        return "strong_trend"
                 elif adx < 20:
-                    return 'ranging'
-            
-            if 'rsi' in current_bar:
-                rsi = current_bar['rsi']
+                    return "ranging"
+
+            if "rsi" in current_bar:
+                rsi = current_bar["rsi"]
                 if not pd.isna(rsi):
                     if rsi < 25 or rsi > 75:
-                        return 'reversal'
-            
-            if 'atr' in current_bar:
-                atr = current_bar['atr']
+                        return "reversal"
+
+            if "atr" in current_bar:
+                atr = current_bar["atr"]
                 if not pd.isna(atr):
                     if atr > 20:
-                        return 'high_volatility'
+                        return "high_volatility"
                     elif atr < 10:
-                        return 'low_volatility'
-            
-            return 'normal'
-            
+                        return "low_volatility"
+
+            return "normal"
+
         except Exception as e:
             logger.error(f"Error analyzing market structure: {e}")
-            return 'unknown'
-    
+            return "unknown"
+
     def _remove_duplicate_signals(self, signals: List[Signal]) -> List[Signal]:
         """Remove duplicate or very similar signals"""
         if not signals:
             return signals
-        
-        unique_signals = []
-        
+
+        unique_signals: List[Signal] = []
+
         for signal in signals:
             is_duplicate = False
-            
+
             for recent in self.recent_signals[-10:]:
-                if (signal.strategy == recent.strategy and
-                    signal.signal_type == recent.signal_type and
-                    abs(signal.entry_price - recent.entry_price) < 5 and
-                    (signal.timestamp - recent.timestamp).seconds < 300):
+                if (
+                    signal.strategy == recent.strategy
+                    and signal.signal_type == recent.signal_type
+                    and abs(signal.entry_price - recent.entry_price) < 5
+                    and (signal.timestamp - recent.timestamp).seconds < 300
+                ):
                     is_duplicate = True
                     break
-            
+
             if not is_duplicate:
                 unique_signals.append(signal)
                 self.recent_signals.append(signal)
-        
+
         if len(self.recent_signals) > 20:
             self.recent_signals = self.recent_signals[-20:]
-        
+
         return unique_signals
-    
+
     def get_strategy_performance(self, strategy_name: str, days: int = 7) -> Dict:
         """Get recent performance metrics for a specific strategy"""
         try:
             signals = self.db_manager.get_recent_signals(strategy_name, limit=50)
-            
+
             if signals.empty:
-                return {'total_signals': 0, 'avg_confidence': 0}
-            
+                return {"total_signals": 0, "avg_confidence": 0}
+
             recent_date = datetime.now() - timedelta(days=days)
-            recent_signals = signals[signals['timestamp'] > recent_date]
-            
+            recent_signals = signals[signals["timestamp"] > recent_date]
+
             return {
-                'total_signals': len(recent_signals),
-                'avg_confidence': recent_signals['confidence'].mean(),
-                'avg_risk_reward': recent_signals['risk_reward'].mean(),
-                'strategies': recent_signals['strategy'].value_counts().to_dict()
+                "total_signals": len(recent_signals),
+                "avg_confidence": recent_signals["confidence"].mean(),
+                "avg_risk_reward": recent_signals["risk_reward"].mean(),
+                "strategies": recent_signals["strategy"].value_counts().to_dict(),
             }
-            
+
         except Exception as e:
             logger.error(f"Error getting strategy performance: {e}")
-            return {'total_signals': 0, 'avg_confidence': 0}
-    
+            return {"total_signals": 0, "avg_confidence": 0}
+
     def cleanup(self):
         """Clean up resources"""
         try:
