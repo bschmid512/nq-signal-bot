@@ -591,26 +591,33 @@ class SignalGenerationEngine:
             for sig in signals:
                 if sig.strategy != "ict_master":
                     continue
-
                 p_win = self.ict_ml_model.score_bar(
                     df_with_indicators,
                     self.ict_feature_strategy,
                     last_pos,
                 )
-                if p_win is None:
-                    continue
 
                 if sig.metadata is None:
                     sig.metadata = {}
+
+                if p_win is None:
+                    # ML couldn’t score – log it, but keep using the base strategy confidence
+                    sig.metadata["ml_edge_p"] = None
+                    sig.metadata["pre_ml_confidence"] = sig.confidence
+                    # DO NOT zero out confidence here
+                    continue
+
+                # ML successfully scored this bar
                 sig.metadata["ml_edge_p"] = p_win
                 sig.metadata["pre_ml_confidence"] = sig.confidence
-
                 sig.confidence = float(p_win)
+
 
                 logger.info(
                     f"[ML] ICT edge prob for {sig.symbol} "
                     f"{sig.signal_type} @ {sig.entry_price:.1f}: p={p_win:.3f}"
                 )
+
 
         return signals
 

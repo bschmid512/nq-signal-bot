@@ -13,7 +13,7 @@ class TradingConfig:
     EXECUTION_TIMEFRAME: str = "1" # 1-min for precise entries
     HTF_TIMEFRAME: str = "15"
     ML_EDGE_MODEL_PATH: str = "models/mnq_ict_edge_xgb.pkl"
-    ML_EDGE_THRESHOLD: float = 0.65
+    ML_EDGE_THRESHOLD: float = 0.45
     # Risk Management (SIMPLIFIED - Quality over Quantity)
     MAX_CONCURRENT_POSITIONS: int = 3  # Allow more flexibility
     MIN_ATR_FOR_TRADING: float = 5.0   # Lower threshold for NQ
@@ -34,7 +34,7 @@ class TradingConfig:
     STRATEGIES: Dict[str, Dict] = field(default_factory=lambda: {
         "divergence": {
             "enabled": False,  # Disabled - too many false signals
-            "base_confidence": 0.55,
+            "base_confidence": 0.50,
             "rsi_period": 14,
             "macd_fast": 12,
             "macd_slow": 26,
@@ -137,7 +137,7 @@ class TradingConfig:
     },
 
         "ml_ict_edge": {
-            "enabled": True,
+            "enabled": False,
             "model_path": "models/mnq_ict_edge_xgb.pkl",
             "min_prob": 0.65,
             "stop_atr_mult": 1.0,

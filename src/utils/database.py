@@ -249,31 +249,42 @@ class DatabaseManager:
 
 
 
-    
     def get_latest_data(self, symbol: str, timeframe: str, limit: int = 100) -> pd.DataFrame:
-        """Get latest market data for analysis"""
+        """Get latest market data for analysis (prefers cleaned table)."""
         try:
             with sqlite3.connect(self.db_path) as conn:
-                query = '''
-                    SELECT * FROM market_data 
-                    WHERE symbol = ? AND timeframe = ? 
-                    ORDER BY timestamp DESC 
+                # Decide which table to use
+                tables = pd.read_sql_query(
+                    """
+                    SELECT name FROM sqlite_master
+                    WHERE type='table' AND name IN ('market_data_clean', 'market_data')
+                    """,
+                    conn,
+                )["name"].tolist()
+
+                table_name = "market_data_clean" if "market_data_clean" in tables else "market_data"
+
+                query = f"""
+                    SELECT * FROM {table_name}
+                    WHERE symbol = ? AND timeframe = ?
+                    ORDER BY timestamp DESC
                     LIMIT ?
-                '''
+                """
                 df = pd.read_sql_query(query, conn, params=(symbol, timeframe, limit))
-                # Around line 150 in get_latest_data method:
+
                 if not df.empty:
-                    df = df.sort_values('timestamp')
-                    # Handle mixed timestamp formats
+                    df = df.sort_values("timestamp")
                     try:
-                        df['timestamp'] = pd.to_datetime(df['timestamp'], format='ISO8601', utc=True)
+                        df["timestamp"] = pd.to_datetime(df["timestamp"], format="ISO8601", utc=True)
                     except Exception:
-                        # Fallback for mixed formats
-                        df['timestamp'] = pd.to_datetime(df['timestamp'], format='mixed', utc=True)
+                        df["timestamp"] = pd.to_datetime(df["timestamp"], format="mixed", utc=True)
+
                 return df
+
         except Exception as e:
             logger.error(f"Error fetching latest data: {e}")
             return pd.DataFrame()
+
     
     def get_recent_signals(self, strategy: Optional[str] = None, limit: int = 50) -> pd.DataFrame:
         """Get recent trading signals"""

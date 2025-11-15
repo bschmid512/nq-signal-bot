@@ -106,7 +106,7 @@ def build_features_for_bar(
 
     Returns dict or None if bar should be skipped (e.g. neutral bias, no ATR).
     """
-    if idx < 250:  # need history for structure/OB/liquidity
+    if idx < 100:  # need history for structure/OB/liquidity
         return None
 
     bar = df.iloc[idx]
